@@ -1,0 +1,9 @@
+<map id="VisualizePointCommandPool" name="VisualizePointCommandPool">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,849,238,1169"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="40,700,204,785"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,785,124,833,119,833,119,785"/>
+<area shape="rect" id="Node000003" href="$class_visualize_point_command.html" title=" " alt="" coords="18,257,225,636"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="124,636,124,683,119,683,119,636"/>
+<area shape="rect" id="Node000004" href="$class_command.html" title=" " alt="" coords="26,5,218,208"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="124,223,124,258,119,258,119,223"/>
+</map>

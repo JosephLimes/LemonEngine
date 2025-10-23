@@ -1,0 +1,9 @@
+<map id="SpriteFont" name="SpriteFont">
+<area shape="rect" id="Node000001" title=" " alt="" coords="46,337,216,743"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="28,172,97,241"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,240,88,320,83,321,67,241"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,120,91"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="65,105,65,172,60,172,60,105"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="121,140,279,273"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="189,274,179,322,174,321,184,273"/>
+</map>

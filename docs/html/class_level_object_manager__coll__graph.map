@@ -1,0 +1,13 @@
+<map id="LevelObjectManager" name="LevelObjectManager">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,828,216,1340"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="218,1033,236,1052,243,1084,240,1107,232,1123,227,1121,235,1105,238,1084,231,1054,214,1036"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="188,663,367,748"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="262,749,226,830,221,828,257,747"/>
+<area shape="rect" id="Node000003" href="$class_level_object_base_factory.html" title=" " alt="" coords="7,273,214,599"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="106,599,104,663,104,811,98,811,99,663,100,598"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="214,597,245,647,241,650,209,600"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="76,140,145,209"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="114,209,114,256,108,256,108,209"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="54,5,168,91"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="114,106,114,140,108,140,108,106"/>
+</map>

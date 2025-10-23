@@ -1,0 +1,2192 @@
+
+// This file contains all of the Lemon documentation for doxygen
+
+
+
+/** \mainpage Lemon Engine Documentation
+Welcome to the documentation for the Lemon game engine. The engine fundamentally functions using GameObject objects that can utilize the engine's services.
+GameObject objects are contained within Scene objects. To get started, implement the functions in the "User Defined" filter. Use LoadAllResources to load your
+game's assets to their managers and to set your initial Scene. Use GameInitialize to set window properties, and GameTerminate to perform any
+necessary housekeeping when your game terminates. See any of those pages for more details. 
+
+The rest of this page contains a sample project showcasing how to get a project started. The project features two cubes that move towards each other,
+and then move in the other direction after colliding, before an alarm triggers them to move towards each other again. This sample project shows how
+to properly use multiple engine features.
+
+<h3> Colliding Cube Sample Project </h3>
+
+<h4> Scene Class </h4>
+
+This is the header file for our scene class. We derive from Scene and have pointers to our GameObjects.
+
+\code
+#ifndef _ExampleScene
+#define _ExampleScene
+
+#include "Scene/Scene.h"
+
+// forward declaration of our game object
+class ExampleCube;
+
+class ExampleScene : public Scene
+{
+	void Initialize() override;
+	void Terminate() override;
+
+	ExampleCube* myCube1;
+	ExampleCube* myCube2;
+};
+
+#endif _ExampleScene
+\endcode
+
+This is the implementation file for our scene. We implement Initialize() and Terminate(), which are called when the scene is made active or deleted respectively.
+
+\code
+#include "ExampleScene.h"
+#include "ExampleCube.h"
+
+void ExampleScene::Initialize()
+{
+	// create our game objects when the scene is initialized
+	myCube1 = new ExampleCube();
+	myCube2 = new ExampleCube();
+
+	// note - for the following setup of our game objects I'm using public
+	// data members for simplicity's sake, this is obviously bad practice
+
+	// set the initial world matrix for our cubes
+	myCube1->myWorldMat = Matrix(TRANS, -9.0f, 0.0f, 0.0f);
+	myCube2->myWorldMat = Matrix(TRANS, 9.0f, 0.0f, 0.0f);
+
+	// set the initial velocities for our cubes
+	myCube1->myMoveSpeed = 0.05f;
+	myCube2->myMoveSpeed = -0.05f;
+
+	// register our game objects to the scene
+	myCube1->SubmitEntry();
+	myCube2->SubmitEntry();
+
+	// set our cube type for collision against other (registered) cubes
+	SetCollisionSelf<ExampleCube>();
+}
+
+void ExampleScene::Terminate()
+{
+	// clean up our game objects when the scene terminates
+	delete myCube1;
+	delete myCube2;
+}
+\endcode
+
+<h4> GameObject Class </h4>
+
+This is the header file for our GameObject class. We derive from GameObject and make sure to override methods for the services we wish to request.
+
+\code
+#ifndef _ExampleCube
+#define _ExampleCube
+
+#include "GameObject/GameObject.h"
+
+class ExampleCube : public GameObject
+{
+public:
+	ExampleCube();
+	~ExampleCube();
+	void Update() override;
+	void Draw3D() override;
+	void Alarm0() override;
+	void Collision(ExampleCube* otherCube);
+
+	GraphicsObject_TextureFlat* myGraphicsObj;
+	Matrix myWorldMat;
+	float myMoveSpeed;
+};
+
+#endif _ExampleCube
+\endcode
+
+This is the implementation file for our GameObject.
+
+\code
+#include "ExampleCube.h"
+#include "Asset Management/ModelManager.h"
+#include "Asset Management/ShaderManager.h"
+#include "Asset Management/TextureManager.h"
+
+ExampleCube::ExampleCube()
+{
+	// set up our graphics object using assets provided by default in engine
+	myGraphicsObj = new GraphicsObject_TextureFlat(
+		ModelManager::Get("LEMON_DEFAULT_CUBE"),
+		ShaderManager::Get("LEMON_DEFAULT_TEXTURE"),
+		TextureManager::Get("LEMON_DEFAULT_TILE")
+	);
+
+	// submit registration for draw calls
+	Drawable::SubmitRegistration();
+
+	// submit registration for update calls
+	Updatable::SubmitRegistration();
+
+	// set up our collision, starting with setting our group (type)
+	SetCollidableGroup<ExampleCube>();
+	// next, we set our collision model
+	SetCollisionModel(myGraphicsObj->getModel());
+	// finally, we submit registration for collision
+	Collidable::SubmitRegistration();
+}
+
+ExampleCube::~ExampleCube()
+{
+	// clean up our graphics object
+	delete myGraphicsObj;
+}
+
+void ExampleCube::Update()
+{
+	// translate our cube on the x axis by our move speed
+	myWorldMat = Matrix(TRANS, Vect(myMoveSpeed, 0.0f, 0.0f)) * myWorldMat;
+
+	// update our graphic object's world matrix
+	myGraphicsObj->SetWorld(myWorldMat);
+
+	// update our collision data
+	UpdateCollisionData(myWorldMat);
+}
+
+void ExampleCube::Draw3D()
+{
+	// render our graphics object to the currently active camera
+	myGraphicsObj->Render(SceneManager::GetActiveCamera());
+}
+
+void ExampleCube::Alarm0()
+{
+	// swap direction
+	myMoveSpeed = -myMoveSpeed;
+}
+
+void ExampleCube::Collision(ExampleCube* otherCube)
+{
+	otherCube;  // need to reference the paramter to avoid c++ compile warnings
+				// in this context the parameter doesn't matter
+
+	// collided with other cube, change direction
+	myMoveSpeed = -myMoveSpeed;
+	// set an alarm to automatically change direction again in 3 seconds
+	Alarmable::SubmitRegistration(AlarmableManager::AlarmID::ALARM_0, 3.0f);
+}
+
+\endcode
+
+This demo works with no further code. However, you may wish to set the window size, name, or background color in the GameInitialize function under the User Defined filter.
+
+*/
+
+
+
+
+
+
+
+
+
+
+/** \page editor Using the Editor
+
+This page details the use of the included level editor in the engine. 
+
+<h3> Preparing Objects for use in the Editor </h3>
+
+Any object you wish to use in the editor must derive from LevelObject. You must of course implement the pure virtual functions LevelInitialize() and LevelTerminate().
+You can treat these as a constructor and destructor respectively. In particular, make sure to register and deregister for services here instead of your constructor
+and destructor to avoid unwanted errors. In addition, you must invoke the macro DEF_FUNC_LVL_ID in a <b>public</b> section of your header to ensure the engine can
+properly identify your object type when saving and loading from file. It's also worth noting that LevelObject derives from GameObject, so it is not necessary to also
+derive from GameObject to obtain its services. Below is an example header for a LevelObject.
+
+\code
+#ifndef _ExampleCube
+#define _ExampleCube
+
+#include "Tools/Editor/LevelObject.h"
+
+class ExampleCube : public LevelObject
+{
+public:
+	ExampleCube() = default;
+	~ExampleCube();
+
+	// make sure this macro is in a public section of your header
+	DEF_FUNC_LVL_ID
+
+	void LevelInitialize() override;
+	void LevelTerminate() override;
+
+	void Update() override;
+	void Draw() override;
+
+	void SceneExit() override;
+
+private:
+	GraphicsObject_WireframeConstantColor* pCube;
+};
+
+#endif _ExampleCube
+\endcode
+
+An important point to understand is that when updating your view in the editor, the editor relies on your object updating its location in its Update() function, using the
+Matrix m_world that is inherited from the LevelObject class. This is the Matrix that the editor will update, so if these changes aren't reflected in your Update() function
+they will not be reflected in the editor.
+
+Likewise, collision data will also need to be computed for the object to be selectable by clicking. The object does <i>not</i> need to be registered for collisions, however.
+
+Something else to consider is that if you don't want your object to render in game, but you do want it to render in the editor, simply use the DrawEditor2D() and
+DrawEditor3D() functions instead of the standard Draw2D() and Draw3D(). This could be useful for objects such as light sources, pathfinding nodes, etc.
+
+Below is a sample implementation file of our ExampleCube.
+
+\code
+#include "ExampleCube.h"
+#include "Tools\Colors.h"
+
+ExampleCube::~ExampleCube()
+{
+	delete pCube;
+}
+
+void ExampleCube::LevelInitialize()
+{
+	pCube = new GraphicsObject_WireframeConstantColor(
+		ModelManager::Get("LEMON_DEFAULT_CUBE"),
+		ShaderManager::Get("LEMON_DEFAULT_COLOR_CONSTANT"),
+		Colors::Blue
+	);
+
+	pCube->SetWorld(m_world);
+
+	SetCollidableGroup<ExampleCube>();
+	SetCollisionModel(pCube->getModel(), OBB);
+
+	Drawable::SubmitRegistration();
+	Updatable::SubmitRegistration();
+}
+
+void ExampleCube::LevelTerminate()
+{
+	Drawable::SubmitDeregistration();
+	Updatable::SubmitDeregistration();
+
+	SubmitExit();
+}
+
+void ExampleCube::Update()
+{
+	pCube->SetWorld(m_world);
+	UpdateCollisionData(m_world);
+}
+
+void ExampleCube::Draw3D()
+{
+	pCube->Render(SceneManager::GetActiveCamera());
+}
+
+void ExampleCube::SceneExit()
+{
+	delete this;
+}
+
+\endcode
+
+With this, our object is ready to be used in the editor. The last step is to formally register it in LoadAllResources(), as shown below. We'll also start the editor by
+designating it as the start scene.
+
+\code
+void Lemon::LoadAllResources()
+{
+	LevelObjectManager::RegisterType<ExampleCube>();
+	SceneManager::SetNextScene(new EditorScene());
+}
+\endcode
+
+<h3> Using the Editor </h3>
+
+Once in the editor, we will see our ExampleCube in the list of selectable objects on the left side of the screen. Using space, we can place it wherever our green marker is.
+We can toggle GameObject properties to be automatically set upon level initialization via the z, x, and c keys. It's worth noting that you can still manually register for 
+these in your LevelInitialize() function, but this could be useful for when you have multiple of the same object and don't want all of them to be collidable, for example.
+
+Press enter to begin typing a filename for the level you are working on, and enter again to confirm. By pressing f1, your map will be saved to the Maps directory. Once you
+have a level you're happy with, you simply need to call LevelInitialize(<mapname>) in the Initialize() function of the Scene you wish to use it in, demonstrated below.
+
+\code
+void ExampleScene::Initialize()
+{
+	LevelInitialize("EXAMPLE_MAP");
+}
+\endcode
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/**********************************************************************************************//**
+ * \class	Alarmable
+ *
+ * \brief	A GameObject that is capable of setting alarms.
+ * 			
+ * Alarms are functions overwritten by the user, which can be registered with a specified time value.
+ * After this amount of time, the function will be called.
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	void Alarmable::SubmitRegistration(AlarmableManager::AlarmID id, float time);
+		 *
+		 * \brief	Submit a request to the scene to register an alarm.
+		 * 			
+		 * Once submitted, the alarm will be active at the top of the following frame. Ensure the alarm is
+		 * not active when a registration request is sent, or the program will crash.
+		 *
+		 * \par Example:
+		 * 		
+		 * The following example shows how a GameObject called Character could register an alarm.
+		 * 
+		 * \code
+		 * 		Character::Character()
+		 * 		{
+		 * 			// object construction
+		 *
+		 *			// register alarm 0 to recieve a call back in five seconds
+		 *			Alarmable::SubmitRegistration(AlarmableManager::AlarmID::ALARM_0, 5.0f);
+		 * 		}
+		 * \endcode
+		 *
+		 * \param 	id  	The identifier for the alarm you want to activate.
+		 * \param 	time	The time in seconds until you want the callback to occur once activated.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Alarmable::SubmitDeregistration(AlarmableManager::AlarmID id);
+		 *
+		 * \brief	Submit a request to the scene to deregister an alarm.
+		 * 			
+		 * Once submitted, the alarm will be deactivated at the top of the following frame. Ensure the alarm is
+		 * active when a deregistration request is sent, or the program will crash.
+		 *
+		 * \param 	id	The identifier for the alarm you want to deactivate.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void Alarmable::Alarm0()
+		 *
+		 * \brief	Alarm 0, to be implemented by the user if they wish to use it
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void Alarmable::Alarm1()
+		 *
+		 * \brief	Alarm 1, to be implemented by the user if they wish to use it
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void Alarmable::Alarm2()
+		 *
+		 * \brief	Alarm 2, to be implemented by the user if they wish to use it
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	Collidable
+ *
+ * \brief	A GameObject that can opt into collision testing.
+ *
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	void Collidable::SubmitRegistration();
+		 *
+		 * \brief	Submit a request to the scene to register for collision.
+		 * 			
+		 * Once submitted, collision testing will be active at the top of the following frame. Ensure the Collidable is
+		 * not already registered when a registration request is sent, that the CollidableGroup has been set, and that the
+		 * collision model has been set, or the program will crash.
+		 * 
+		 * \par Example
+		 * 		
+		 * The following example shows how a GameObject called Character could register for collision.
+		 * 
+		 * \code
+		 * 		Character::Character()
+		 * 		{
+		 * 			// object construction
+		 *
+		 *			// set our collidable group
+		 *			SetCollidableGroup<Character>();
+		 *
+		 *			// set our collision model. you may want to use a lower poly model than your primary one
+		 *			SetCollisionModel(pMyGraphicsObj->GetModel());
+		 *
+		 *			// set our initial collision data. make sure to update this any time your world matrix changes
+		 *			UpdateCollisionData(myWorldMatrix);
+		 *
+		 *			// register for collision
+		 *			Collidable::SubmitRegistration();
+		 * 		}
+		 * \endcode
+		 * 		   
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Collidable::SubmitDeregistration();
+		 *
+		 * \brief	Submit a request to the scene to deregister for collision processing.
+		 *
+		 * Once submitted, the alarm will be deactivated at the top of the following frame. Ensure the Collidable is
+		 * registered when a deregistration request is sent, or the program will crash.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	const CollisionVolume& Collidable::GetCollisionVolume() const;
+		 *
+		 * \brief	Gets the selected collision volume
+		 *
+		 * \returns	A reference to the collision volume.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	const CollisionVolumeBSphere& Collidable::GetBSphere() const;
+		 *
+		 * \brief	Gets the bounding sphere collision volume.
+		 *
+		 * \returns	A reference to the bounding sphere.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	template <typename T> void Collidable::SetCollidableGroup()
+		 *
+		 * \brief	Sets the collidable group
+		 * 			
+		 * This is necessary for internal classification for collision processing.
+		 * 
+		 * \par Example
+		 *
+		 * The following example shows how a GameObject called Character could register for collision.
+		 *
+		 * \code
+		 * 		Character::Character()
+		 * 		{
+		 * 			// object construction
+		 *
+		 *			// set our collidable group
+		 *			SetCollidableGroup<Character>();
+		 *
+		 *			// set our collision model. you may want to use a lower poly model than your primary one
+		 *			SetCollisionModel(pMyGraphicsObj->GetModel());
+		 *
+		 *			// set our initial collision data. make sure to update this any time your world matrix changes
+		 *			UpdateCollisionData(myWorldMatrix);
+		 *
+		 *			// register for collision
+		 *			Collidable::SubmitRegistration();
+		 * 		}
+		 * \endcode
+		 *
+		 * \tparam	T	Must be the class name of the object who calls it.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Collidable::SetCollisionModel(Model* pModel, Volumes type);
+		 *
+		 * \brief	Sets the collision model
+		 * 			
+		 * This sets the model to be used when processing collisions. Consider using a lower poly model than
+		 * your primary model. A collision volume of the given type will be computed based on the model.
+		 * 
+		 * \par Example
+		 *
+		 * The following example shows how a GameObject called Character could register for collision.
+		 *
+		 * \code
+		 * 		Character::Character()
+		 * 		{
+		 * 			// object construction
+		 *
+		 *			// set our collidable group
+		 *			SetCollidableGroup<Character>();
+		 *
+		 *			// set our collision model. you may want to use a lower poly model than your primary one
+		 *			SetCollisionModel(pMyGraphicsObj->GetModel(), OBB);
+		 *
+		 *			// set our initial collision data. make sure to update this any time your world matrix changes
+		 *			UpdateCollisionData(myWorldMatrix);
+		 *
+		 *			// register for collision
+		 *			Collidable::SubmitRegistration();
+		 * 		}
+		 * \endcode
+		 *
+		 *
+		 * \param		pModel	The model to be used.
+		 * \param		type	The type of collision volume to be used.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Collidable::UpdateCollisionData(const Matrix& matrix);
+		 *
+		 * \brief	Recomputes the collision data based on the passed in world matrix.
+		 *
+		 * This must be called any time the world matrix changes to ensure accurate collision processing.
+		 * 
+		 * \par Example
+		 *
+		 * The following example shows how a GameObject called Character could register for collision.
+		 *
+		 * \code
+		 * 		Character::Character()
+		 * 		{
+		 * 			// object construction
+		 *
+		 *			// set our collidable group
+		 *			SetCollidableGroup<Character>();
+		 *
+		 *			// set our collision model. you may want to use a lower poly model than your primary one
+		 *			SetCollisionModel(pMyGraphicsObj->GetModel());
+		 *
+		 *			// set our initial collision data. make sure to update this any time your world matrix changes
+		 *			UpdateCollisionData(myWorldMatrix);
+		 *
+		 *			// register for collision
+		 *			Collidable::SubmitRegistration();
+		 * 		}
+		 * \endcode
+		 *
+		 * \param 	matrix	The world matrix.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void Collidable::CollisionTerrain();
+		 *
+		 * \brief	Gets called when the object collides with the scene's terrain if registered.
+		 *
+		 * \returns	A reference to the bounding sphere.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	CollisionVolume
+ *
+ * \brief	This is the base class that various GameObject collision volumes derive from
+ **************************************************************************************************/
+
+ 		 /**********************************************************************************************//**
+		 * \fn	void CollisionVolume::DebugView(const Vect& color) const = 0;
+		 *
+		 * \brief	Uses the Visualizer tool to display the given CollisionVolume
+		 *
+		 * \param			color	The color used to render.
+		 **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	virtual void CollisionVolume::ComputeData(Model* pModel, const Matrix& mat) = 0;
+		 *
+		 * \brief	Calculates updated collision volume data based on the passed in world matrix.
+		 *
+		 * \param			pModel	The model.
+		 * \param 		  	world   The world matrix.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	CollisionVolumeAABB
+ *
+ * \brief	An axis aligned bounding box used for collision processing.
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	void CollisionVolumeAABB::ComputeData(Model* pModel, const Matrix& mat) override;
+		 *
+		 * \brief	Calculates updated axis aligned bounding box data based on the passed in world matrix.
+		 *
+		 * \param			pModel	The model.
+		 * \param 		  	mat   	The world matrix.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	CollisionVolumeBSphere
+ *
+ * \brief	A bounding sphere used for collision processing.
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	const Vect& CollisionVolumeBSphere::GetCenter() const;
+		 *
+		 * \brief	Gets the center in world space
+		 *
+		 * \returns	The center in world space.
+		 **************************************************************************************************/
+
+		 	/**********************************************************************************************//**
+		 * \fn	float CollisionVolumeBSphere::GetRadius() const;
+		 *
+		 * \brief	Gets the radius of the bounding sphere.
+		 *
+		 * \returns	The radius.
+		 **************************************************************************************************/
+
+		 	/**********************************************************************************************//**
+		 * \fn	void CollisionVolumeBSphere::ComputeData(Model* pModel, const Matrix& mat) override;
+		 *
+		 * \brief	Calculates updated bounding sphere data based on the passed in world matrix.
+		 *
+		 * \param			pModel	The model.
+		 * \param 		  	mat   	The world matrix.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	CollisionVolumeOBB
+ *
+ * \brief	An oriented bounding box used for collision processing.
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	void CollisionVolumeOBB::ComputeData(Model* pModel, const Matrix& mat) override;
+		 *
+		 * \brief	Calculates updated oriented bounding box data based on the passed in world matrix.
+		 *
+		 * \param			pModel	The model.
+		 * \param 		  	mat   	The world matrix.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \namespace	Colors
+ *
+ * \brief	Provides many preset colors to choose from.
+ **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	Drawable
+ *
+ * \brief	A GameObject that can opt in to recieve draw calls.
+ *
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	void Drawable::SubmitRegistration();
+		 *
+		 * \brief	Submit a request to the scene to recieve draw calls.
+		 * 			
+		 * Once submitted, draw calls will begin at the top of the following frame.
+		 * 
+		 * \par Example:
+		 *
+		 * The following example shows how a GameObject called Character could register for draw calls.
+		 *
+		 * \code
+		 * 		Character::Character()
+		 * 		{
+		 * 			// object construction
+		 *
+		 *			// register for draw calls
+		 *			Drawable::SubmitRegistration();
+		 * 		}
+		 * \endcode
+		 *
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Drawable::SubmitDeregistration();
+		 *
+		 * \brief	Submit a request to the scene to deregister for draw calls.
+		 *
+		 * Once submitted, draw calls will cease at the top of the next frame.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void Drawable::Draw2D()
+		 *
+		 * \brief	Used to draw two-dimensional elements.
+		 * 			
+		 * Called every frame once the object is registered. Draw 2D objects such as Sprite and SpriteString
+		 * here.
+		 *
+		 * \par Example
+		 *
+		 * The following example shows how a GameObject called Character could use Draw2D.
+		 *
+		 * \code
+		 * 		void Character::Draw2D()
+		 * 		{
+		 * 			// draw a Sprite
+		 * 			pMySprite->Render()
+		 * 			
+		 *			// draw a SpriteString
+		 *			pMySpriteString->Render();
+		 * 		}
+		 * \endcode
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void Drawable::Draw3D()
+		 *
+		 * \brief	Used to draw three-dimensional elements.
+		 *
+		 * Called every frame once the object is registered. Draw 3D objects here.
+		 *
+		 * \par Example
+		 *
+		 * The following example shows how a GameObject called Character could use Draw3D.
+		 *
+		 * \code
+		 * 		void Character::Draw3D()
+		 * 		{
+		 * 			// draw the model to the currently active camera
+		 * 			pMyGraphicsObj->Render(SceneManager::GetActiveCamera());
+		 * 		}
+		 * \endcode
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	FontManager
+ *
+ * \brief	Asset manager for SpriteFonts.
+ *
+ * This class manages the loading and retrieval of SpriteFont objects.
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	static void FontManager::Load(std::string id, std::string path)
+		 *
+		 * \brief	Loads a SpriteFont specified by the user.
+		 *
+		 * \param 	id  	The identifier to be later used to retrieve the asset.
+		 * \param 	path	The name of the file placed in Assets\Fonts.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static SpriteFont* FontManager::Get(std::string id)
+		 *
+		 * \brief	Retrives the SpriteFont associated with the given identifier.
+		 *
+		 * \param 	id	The identifier associated with the asset.
+		 *
+		 * \returns	a pointer to the SpriteFont
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	GameObject
+ *
+ * \brief	A game object. These are objects that recieve the majority of services that the engine
+ * 			provides.
+ * 			
+ *
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	void GameObject::SubmitEntry();
+		 *
+		 * \brief	Submit entry to the scene to recieve a callback once processed.
+		 *
+		 * At the top of the next frame, SceneEntry() will be called. Ensure the GameObject is not already
+		 * registered to the scene, or the program will crash.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void GameObject::SubmitExit();
+		 *
+		 * \brief	Submit exit to the scene to recieve a callback once processed.
+		 *
+		 * At the top of the next frame, SceneExit() will be called. Ensure the GameObject is registered to
+		 * the scene, or currently pending deregistration or the program will crash.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void GameObject::SceneEntry()
+		 *
+		 * \brief	To be called when the entry submission is processed.
+		 *
+		 * Implement this to perform any necessary steps for initialization. This is particularly useful for
+		 * objects that may repeatedly enter and exit the scene.
+		 * 
+		 *
+		 * \par Example
+		 *
+		 * The following example shows how a GameObject called Character could use SceneEntry() to register
+		 * for its desired services.
+		 *
+		 * \code
+		 * 		void Character::SceneEntry()
+		 * 		{
+		 * 			// register for draw calls
+		 * 			Drawable::SubmitRegistration();
+		 * 			
+		 *			// register for update calls
+		 *			Updatable::SubmitRegistration();
+		 *			
+		 *			// update our collision data and register for collision processing
+		 *			// *this assumes that the collidable group and collision model have already been set!
+		 *			UpdateCollisionData(myWorldMatrix);
+		 *			Collidable::SubmitRegistration();
+		 * 		}
+		 * \endcode
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void GameObject::SceneExit()
+		 *
+		 * \brief	To be called when the exit submission is processed.
+		 *
+		 * Implement this to perform any necessary steps for cleanup. This is particularly useful for
+		 * objects that may repeatedly enter and exit the scene.
+		 * 
+		 * \par Example
+		 *
+		 * The following example shows how a GameObject called Character could use SceneExit() to deregister
+		 * from its services.
+		 *
+		 * \code
+		 * 		void Character::SceneExit()
+		 * 		{
+		 * 			// deregister for draw calls
+		 * 			Drawable::SubmitDeregistration();
+		 *
+		 *			// deregister for update calls
+		 *			Updatable::SubmitDeregistration();
+		 *
+		 *			// deregister for collision processing
+		 *			Collidable::SubmitDeregistration();
+		 * 		}
+		 * \endcode
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	ImageManager
+ *
+ * \brief	Asset manager for Images.
+ *
+ * This class manages the loading and retrieval of Image objects.
+ **************************************************************************************************/
+
+		/**********************************************************************************************//**
+		 * \fn	static void ImageManager::Load(std::string id, Texture* pTex)
+		 *
+		 * \brief	Loads an image specified by the user.
+		 *
+		 * Since no Rect is passed in, the image will be the full size of the Texture passed in.
+		 *
+		 * \param 		  	id  	The identifier to be later used to retrieve the asset.
+		 * \param			pTex	The Texture to be used to create the image.
+		 **************************************************************************************************/
+
+		/**********************************************************************************************//**
+		 * \fn	static void ImageManager::Load(std::string id, Texture* pTex, Rect* pRect)
+		 *
+		 * \brief	Loads an image specified by the user.
+		 *
+		 * The image will use a subset of the Texture specified by the Rect* that is passed in. 
+		 *
+		 * \param 		  	id   	The identifier to be later used to retrieve the asset.
+		 * \param			pTex 	The Texture to be used to create the image.
+		 * \param			pRect	The Rect to be used to specify the subset of the Texture
+		 **************************************************************************************************/
+		 
+		/**********************************************************************************************//**
+		 * \fn	static Image* ImageManager::Get(std::string id)
+		 *
+		 * \brief	Retrives the Image associated with the given identifier.
+		 *
+		 * \param 	id	The identifier associated with the asset.
+		 *
+		 * \returns	a pointer to the Image
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	Inputable
+ *
+ * \brief	An inputable. These are game objects that can recieve callbacks for keyboard input events.
+ *
+ **************************************************************************************************/
+
+
+ 		/**********************************************************************************************//**
+		 * \fn	void Inputable::SubmitRegistration(AZUL_KEY key, KeyEvent event);
+		 *
+		 * \brief	Submit a request to recieve callbacks for a particular keyboard input event.
+		 *
+		 * Once submitted, starting next frame any time the desired keyboard input event occurs this object
+		 * will recieve a callback.
+		 *
+		 * \par Example:
+		 *
+		 * The following example shows how a GameObject called Character could register for keyboard inputs.
+		 *
+		 * \code
+		 * 		Character::Character()
+		 * 		{
+		 * 			// object construction
+		 *
+		 *			// register to recieve a callback when the spacebar is pressed
+		 *			Inputable::SubmitRegistration(AZUL_KEY::KEY_SPACE, KeyEvent::KEY_PRESS);
+		 *			
+		 *			// register to recieve a callback when the K key is released
+		 *			Inputable::SubmitRegistration(AZUL_KEY::KEY_K, KeyEvent::KEY_RELEASE);
+		 * 		}
+		 * \endcode
+		 * 
+		 * \param 	key  	The key.
+		 * \param 	event	The event.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Inputable::SubmitDeregistration(AZUL_KEY key, KeyEvent event);
+		 *
+		 * \brief	Submit a request to stop recieving callbacks for a particular keyboard input event.
+		 *
+		 * Once submitted, starting next frame the object will stop recieving callbacks.
+		 *
+		 * \par Example:
+		 *
+		 * The following example shows how a GameObject called Character could deregister for keyboard inputs.
+		 *
+		 * \code
+		 * 		Character::Character()
+		 * 		{
+		 * 			// object construction
+		 *
+		 *			// deregister from recieving callbacks when the spacebar is pressed
+		 *			Inputable::SubmitDeregistration(AZUL_KEY::KEY_SPACE, KeyEvent::KEY_PRESS);
+		 *
+		 *			// deregister from recieving callbacks when the K key is released
+		 *			Inputable::SubmitDeregistration(AZUL_KEY::KEY_K, KeyEvent::KEY_RELEASE);
+		 * 		}
+		 * \endcode
+		 * 
+		 * \param 	key  	The key.
+		 * \param 	event	The event.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void Inputable::KeyPressed(AZUL_KEY key)
+		 *
+		 * \brief	Keyboard key press event callback.
+		 * 			
+		 * To be implemented by the user if they wish to use it.
+		 *
+		 * \note	This function will be called regardless of which key is pressed. It may be necessary to
+		 * 			create a conditional within the function if you want different behaviors per key.
+		 *
+		 * \param 	key	The key.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void Inputable::KeyReleased(AZUL_KEY key)
+		 *
+		 * \brief	Keyboard key release event callback.
+		 * 			
+		 * To be implemented by the user if they wish to use it.
+		 *
+		 * \note	This function will be called regardless of which key is released. It may be necessary to
+		 * 			create a conditional within the function if you want different behaviors per key.
+		 *
+		 * \param 	key	The key.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+* \class	Lemon
+*
+* \brief	The primary engine class.
+*
+**************************************************************************************************/
+
+		//*************************
+		//						  *
+		// User defined functions *
+		//						  *
+		//*************************
+
+		/**********************************************************************************************//**
+		 * \fn	void Lemon::LoadAllResources();
+		 *
+		 * \brief	Loads all assets prior to starting the game
+		 * 			
+		 * Implement this function and place asset management Load() functions here. This is also where you
+		 * set the starting scene.
+		 * 
+		 * \par Example:
+		 *
+		 * The following example shows how the user could load some assets prior to game start.
+		 *
+		 * \code
+		 * 		void Lemon::LoadAllResources()
+		 * 		{
+		 * 			// set the start scene
+		 *			SceneManager::SetNextScene(new DemoScene); 		
+		 *
+		 *			// load a model
+		 *			ModelManager::Load("rock", "rock.azul");
+		 *			
+		 *			// load a texture
+		 *			TextureManager::Load("grass", "grass.tga");
+		 *			
+		 *			// load a shader
+		 *			ShaderManager::Load("texture", "textureFlatRender");
+		 * 		}
+		 * \endcode
+		 *
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Lemon::GameInitialize();
+		 *
+		 * \brief	Called as the game starts
+		 * 			
+		 * Implement this function to set up basic properties before running.
+		 *
+		 * \par Example:
+		 *
+		 * The following example shows how the user could set properties before the game starts.
+		 *
+		 * \code
+		 * 		void Lemon::GameInitialize()
+		 * 		{
+		 * 			// set the window name
+		 *			Lemon::SetWindowName("Demo Game");
+		 *			
+		 *			// set the background color to a blue
+		 *			Lemon::SetClear(0.6039f, 0.74117f, 0.96078f, 1.0f);
+		 *			
+		 *			// set the window size to 800x600
+		 *			this->SetWidthHeight(800, 600);
+		 * 		}
+		 * \endcode
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Lemon::GameTerminate();
+		 *
+		 * \brief	Called as the game ends
+		 *
+		 * Use this to clean up any objects that persist between scenes.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static int Lemon::GetHeight();
+		 *
+		 * \brief	Gets the height of the window.
+		 *
+		 * \returns	The height.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static int Lemon::GetWidth();
+		 *
+		 * \brief	Gets the width of the window.
+		 *
+		 * \returns	The width.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static void Lemon::SetWidthHeight(int width, int height);
+		 *
+		 * \brief	Sets the dimensions of the window.
+		 *
+		 * \param 	width 	The width.
+		 * \param 	height	The height.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static void Lemon::SetClear(float r, float g, float b, float a);
+		 *
+		 * \brief	Sets the background color to be rendered.
+		 *
+		 *
+		 * \param 	r	red value
+		 * \param 	g	green value
+		 * \param 	b	blue value
+		 * \param 	a	alpha value
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static void Lemon::SetWindowName(const char* name);
+		 *
+		 * \brief	Sets the window name
+		 *
+		 * \param 	name	The name.
+		 **************************************************************************************************/
+
+
+ /**********************************************************************************************//**
+ * \namespace	LemonMath
+ *
+ * \brief	Math tools used by the engine
+ **************************************************************************************************/
+
+  		/**********************************************************************************************//**
+		 * \fn	bool LemonMath::InRange(float a, float min, float max);
+		 *
+		 * \brief	Tests if a is in range of min and max
+		 *
+		 * \param 	a	The value to test.
+		 * \param 	min	The minimum value.
+		 * \param 	max	The maximum value.
+		 *
+		 * \returns	True if there a is in range, false otherwise.
+		 **************************************************************************************************/
+
+  		/**********************************************************************************************//**
+		 * \fn	bool LemonMath::InRange(int a, int min, int max);
+		 *
+		 * \brief	Tests if a is in range of min and max
+		 *
+		 * \param 	a	The value to test.
+		 * \param 	min	The minimum value.
+		 * \param 	max	The maximum value.
+		 *
+		 * \returns	True if there a is in range, false otherwise.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	bool LemonMath::Overlap(float a, float b, float c, float d);
+		 *
+		 * \brief	Tests if intervals [a,b] and [c,d] overlap
+		 *
+		 * \param 	a	The min of the first interval.
+		 * \param 	b	The max of the first interval.
+		 * \param 	c	The min of the second interval.
+		 * \param 	d	The max of the second interval.
+		 *
+		 * \returns	True if the intervals overlap, false otherwise.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	CollisionVolumeAABB LemonMath::AABBSum(const CollisionVolumeAABB& a, const CollisionVolumeAABB& b);
+		 *
+		 * \brief	Gives the sum of two AABB's, or the axis aligned bounding box that contains a and b.
+		 *
+		 * \param 	a	The first AABB.
+		 * \param 	b	The second AABB.
+		 *
+		 * \returns	The axis aligned bounding box that contains a and b.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	bool LemonMath::Clamp(float v, float min, float max);
+		 *
+		 * \brief	Clamps v to range [min, max]
+		 *
+		 * \param 	v	The value to clamp.
+		 * \param 	min	The min value of the range.
+		 * \param 	max	The max value of the range.
+		 *
+		 * \returns	The value v clamped to range [min, max]
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	bool LemonMath::Clamp(int v, float min, float max);
+		 *
+		 * \brief	Clamps v to range [min, max]
+		 *
+		 * \param 	v	The value to clamp.
+		 * \param 	min	The min value of the range.
+		 * \param 	max	The max value of the range.
+		 *
+		 * \returns	The value v clamped to range [min, max]
+		 **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	bool LemonMath::Intersect(const CollisionVolume& a, const CollisionVolume& b);
+		 *
+		 * \brief	Tests for intersection between two collision volumes
+		 *
+		 * \param 	a	The first CollisionVolume to test.
+		 * \param 	b	The second CollisionVolume to test.
+		 *
+		 * \returns	True if there is an intersection, false otherwise.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	bool LemonMath::Intersect(const CollisionVolume& a, const Vect& b);
+		 *
+		 * \brief	Tests for intersection between a CollisionVolume and a point.
+		 *
+		 * \param 	a	The CollisionVolume to test.
+		 * \param 	b	The point to test.
+		 *
+		 * \returns	True if there is an intersection, false otherwise.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	bool LemonMath::Intersect(const CollisionVolume& a, const Vect& b, const Vect& v);
+		 *
+		 * \brief	Tests for intersection between a CollisionVolume and a ray.
+		 *
+		 * \param 	a	The CollisionVolume to test.
+		 * \param 	b	The starting point of the ray.
+		 * \param 	v	The direction of the ray.
+		 *
+		 * \returns	True if there is an intersection, false otherwise.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	LevelObject
+ *
+ * \brief	A GameObject that can be used in the editor.
+ *
+ **************************************************************************************************/
+
+ 		 /**********************************************************************************************//**
+		 * \fn	virtual void LevelObject::LevelInitialize() = 0;
+		 *
+		 * \brief	Called on level start. You can treat this similar to a constructor.
+		 *
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void LevelObject::LevelTerminate() = 0;
+		 *
+		 * \brief	Called on level end. You can treat this similar to a destructor.
+		 *
+		 **************************************************************************************************/
+
+
+/******	****************************************************************************************//**
+ * \class	ModelManager
+ *
+ * \brief	Asset manager for Models.
+ *
+ * This class manages the loading and retrieval of Model objects.
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	static void ModelManager::Load(std::string id, std::string path)
+		 *
+		 * \brief	Loads a Model specified by the user.
+		 *
+		 * \param 	id  	The identifier to be later used to retrieve the asset.
+		 * \param 	path	The name of the file placed in Assets\Models.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static void ModelManager::Load(std::string id, int sizeXZ, int repeatU, int repeatV)
+		 *
+		 * \brief	Loads a plane Model specified by the user.
+		 *
+		 * \param 	id	   	The identifier to be later used to retrieve the asset.
+		 * \param 	sizeXZ 	The size of one side of the plane.
+		 * \param 	repeatU	The number of times the texture repeats on the U axis.
+		 * \param 	repeatV	The number of times the texture repeats on the V axis.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static void ModelManager::Load(std::string id, const Model::PreMadeModels& model)
+		 *
+		 * \brief	Loads a premade Model provided by the engine, specified by the user.
+		 *
+		 * \param 	id   	The identifier to be later used to retrieve the asset.
+		 * \param 	model	The model to be loaded.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static Model* ModelManager::Get(std::string id)
+		 *
+		 * \brief	Retrives the Model associated with the given identifier.
+		 *
+		 * \param 	id	The identifier associated with the asset.
+		 *
+		 * \returns	a pointer to the Model.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	Scene
+ *
+ * \brief	A scene manages GameObjects and their services.
+ *
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	Camera* Scene::GetActiveCamera();
+		 *
+		 * \brief	Gets active camera
+		 *
+		 * This is useful for rendering 3D objects.
+		 * 
+		 * \par Example
+		 *
+		 * The following example shows how a GameObject called Character could use GetActiveCamera().
+		 *
+		 * \code
+		 * 		void Character::Draw3D()
+		 * 		{
+		 * 			// draw the model to the currently active camera
+		 * 			// the scene manager provides a convenient passthrough to this function
+		 * 			pMyGraphicsObj->Render(SceneManager::GetActiveCamera());
+		 * 		}
+		 * \endcode
+		 *
+		 * \returns	a pointer to the active camera.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Scene::SetActiveCamera(Camera* pCam);
+		 *
+		 * \brief	Sets active camera
+		 *
+		 * This can be used to change the currently active camera.
+		 *
+		 * \param		pCam	pointer to the new camera.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Scene::SetActiveCameraToDefault();
+		 *
+		 * \brief	Sets active camera to the default camera
+		 *
+		 * The scene starts with a camera placed in a default position. Use this function to switch to it.
+		 * 
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	Camera* Scene::GetSpriteCamera();
+		 *
+		 * \brief	Gets the camera used for sprite rendering.
+		 *
+		 * This returns the orthographic camera that the scene creates to render 2D elements such as sprites.
+		 *
+		 * \returns	a pointer to the scene's sprite camera.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Scene::SetInputMode(InputMode mode);
+		 *
+		 * \brief	Sets the keyboard input mode to the desired type, between standard and typed
+		 *
+		 * Standard input mode allows inputables to recieve callbacks for individual registered keypresses,
+		 * while typed input mode sends all keypresses to the KeyTyped() function, while ignoring the
+		 * previously mentioned callbacks.
+		 *
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	Vect Scene::TerrainNormAt(const Vect& pos) const
+		 *
+		 * \brief	Gives the normal of the Terrain at the given position.
+		 *
+		 * \param 	pos The position to check.
+		 *
+		 * \returns	the normal for the position.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	float Scene::TerrainHeightAt(const Vect& pos) const
+		 *
+		 * \brief	Gives the height of the Terrain at the given position.
+		 *
+		 * \param 	pos The position to check.
+		 *
+		 * \returns	the height for the position.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	template< typename T > void Scene::SetCollisionSelf()
+		 *
+		 * \brief	Specifies a type to process for self-collision processing
+		 * 			
+		 * Use this function to specify a type that you wish to enable collision processing for other objects
+		 * of the same type.
+		 * 
+		 * \par Example
+		 *
+		 * The following example shows how a Scene called Demo could use SetCollisionSelf<T>() to enable self-
+		 * collision processing for type Bullet.
+		 *
+		 * \code
+		 * 		void Demo::Initialize()
+		 * 		{
+		 * 			// the scene will now test for bullet->bullet collisions.
+		 * 			// only bullets that are registered for collisions will be considered
+		 * 			SetCollisionSelf<Bullet>()
+		 * 		}
+		 * \endcode
+		 *
+		 * \tparam	T	The type you wish to use.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	template< typename T1, typename T2 > void Scene::SetCollisionPair()
+		 *
+		 * \brief	Specifies two types to process for pair-collision processing
+		 *
+		 * Use this function to specify two types that you wish to enable collision processing for as pairs.
+		 *
+		 * \par Example
+		 *
+		 * The following example shows how a Scene called Demo could use SetCollisionPair<T1, T2>() to enable
+		 * collision processing for types Bullet and Character.
+		 *
+		 * \code
+		 * 		void Demo::Initialize()
+		 * 		{
+		 * 			// the scene will now test for bullet->character AND character->bullet collisions.
+		 * 			// only objects that are registered for collisions will be considered.
+		 * 			// note that when a collision happens, BOTH objects will recieve a callback
+		 * 			SetCollisionPair<Bullet, Character>()
+		 * 		}
+		 * \endcode
+		 * 
+		 * \tparam	T1	The first type to be tested.
+		 * \tparam	T2	The second type to be tested.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	template< typename T > void Scene::SetCollisionTerrain()
+		 *
+		 * \brief	Specifies a type to process for terrain-collision processing
+		 * 			
+		 * Use this function to specify a type that you wish to enable collision processing against the scene's
+		 * terrain.
+		 * 
+		 * \par Example
+		 *
+		 * The following example shows how a Scene called Demo could use SetCollisionSelf<T>() to enable terrain-
+		 * collision processing for type Bullet.
+		 *
+		 * \code
+		 * 		void Demo::Initialize()
+		 * 		{
+		 * 			// the scene will now test for bullet->terrain collisions.
+		 * 			// only bullets that are registered for collisions will be considered
+		 * 			SetCollisionTerrain<Bullet>()
+		 * 		}
+		 * \endcode
+		 *
+		 * \tparam	T	The type you wish to use.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Scene::SetTerrain(std::string id);
+		 *
+		 * \brief	Sets the active Terrain in the scene.
+		 *
+		 * \param	id The identifier associated with the Terrain.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Scene::LevelInitialize(std::string mapname);
+		 *
+		 * \brief	Loads a map created in the editor.
+		 *
+		 * \param	mapname The name of the map file. .lmf should not be included.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void Scene::Initialize()
+		 *
+		 * \brief	Initializes the scene.
+		 *
+		 * This is called when the scene is set to be active by the SceneManager. Use this to set up any
+		 * necessary objects, similar to a constructor.
+		 *
+		 * \par Example
+		 *
+		 * The following example shows how a Scene called Demo could use Initialize() to instantiate a GameObject
+		 * called Character.
+		 *
+		 * \code
+		 * 		void Demo::Initialize()
+		 * 		{
+		 * 			// set up GameObject
+		 * 			pMyGameObject = new Character();
+		 * 		}
+		 * \endcode
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void Scene::Terminate()
+		 *
+		 * \brief	Terminates the scene.
+		 *
+		 * This is called when the scene is changed by the SceneManager, or when the program is closed. Use
+		 * this to clean up any necessary objects, similar to a destructor.
+		 *
+		 * \par Example
+		 *
+		 * The following example shows how a Scene called Demo could use Terminate() to clean up a GameObject.
+		 * 
+		 *
+		 * \code
+		 * 		void Demo::Terminate()
+		 * 		{
+		 * 			// clean up GameObject
+		 * 			delete pMyGameObject;
+		 * 		}
+		 * \endcode
+		 **************************************************************************************************/
+
+/**********************************************************************************************//**
+ * \class	SceneManager
+ *
+ * \brief	This class manages the currently active Scene and handles Scene changes.
+ *
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	static Scene& SceneManager::GetActiveScene()
+		 *
+		 * \brief	Gets the currently active Scene
+		 *
+		 *
+		 * \returns A reference to the currently active scene.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static void SceneManager::SetNextScene(Scene* pScene)
+		 *
+		 * \brief	Sets the next scene
+		 *
+		 * Once set, the scene change will take place the following frame.
+		 *
+		 * \param		pScene	pointer to the new scene
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static Camera* SceneManager::GetActiveCamera()
+		 *
+		 * \brief	Gets current camera from the active scene
+		 *
+		 * This is a passthrough to the current Scene to get the active camera.
+		 * 
+		 * \par Example
+		 *
+		 * The following example shows how a GameObject called Character could use GetActiveCamera().
+		 *
+		 * \code
+		 * 		void Character::Draw3D()
+		 * 		{
+		 * 			// draw the model to the currently active camera
+		 * 			pMyGraphicsObj->Render(SceneManager::GetActiveCamera());
+		 * 		}
+		 * \endcode
+		 *
+		 * \returns	a pointer to the currently active camera.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static void SceneManager::SetActiveCamera(Camera* pCam)
+		 *
+		 * \brief	Sets active camera on the current Scene
+		 *
+		 * This is a passthrough to the current scene to change the active camera.
+		 *
+		 * \param		pCam	A pointer to the new camera.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static void SceneManager::SetActiveCameraToDefault()
+		 *
+		 * \brief	Sets active camera to the default camera on the current Scene
+		 *
+		 * This is a passthrough to the current scene to switch to its default camera.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static Camera* SceneManager::GetSpriteCamera()
+		 *
+		 * \brief	Gets the camera used for sprite rendering in the current Scene.
+		 *
+		 * This returns the orthographic camera that the current scene created to render 2D elements such as sprites.
+		 *
+		 * \returns	a pointer to the current Scene's sprite camera.
+		 **************************************************************************************************/
+
+
+ /**********************************************************************************************//**
+ * \class	ScreenLog
+ *
+ * \brief	A debugging tool that allows you to easily render SpriteStrings to the screen.
+ *
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	static void ScreenLog::Add(char* pMsg, ...)
+		 *
+		 * \brief	Add a new line to the screen to be printed.
+		 *
+		 * \note	This tool supports printf() style formatting
+		 *
+		 * \param			pMsg	The message.
+		 * \param 		  	... 	String formatting arguments.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static void ScreenLog::Edit(unsigned int line, char* pMsg, ...)
+		 *
+		 * \brief	Edit the specified line.
+		 *
+		 * \note	This tool supports printf() style formatting
+		 *
+		 * \param			line	The index of the line to edit.
+		 * \param			pMsg	The message.
+		 * \param 		  	... 	String formatting arguments.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static void ScreenLog::Pop()
+		 *
+		 * \brief	Removes the most recently added message.
+		 *
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static void ScreenLog::Clear()
+		 *
+		 * \brief	Removes all messages.
+		 *
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	ShaderManager
+ *
+ * \brief	Asset manager for Shaders.
+ *
+ * This class manages the loading and retrieval of ShaderObject objects.
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	static void ShaderManager::Load(std::string id, std::string path)
+		 *
+		 * \brief	Loads a Shader specified by the user.
+		 *
+		 * \param 	id  	The identifier to be later used to retrieve the asset.
+		 * \param 	path	The name of the file placed in Assets\Shaders.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static ShaderObject* ShaderManager::Get(std::string id)
+		 *
+		 * \brief	Retrives the Shader associated with the given identifier.
+		 *
+		 * \param 	id	The identifier associated with the asset.
+		 *
+		 * \returns	a pointer to the Shader.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	Sprite
+ *
+ * \brief	A sprite, a 2D object with an image that can be rendered.
+ * 			
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	Sprite::Sprite(std::string imageID);
+		 *
+		 * \brief	Constructor
+		 *
+		 *
+		 * \param 	Identifier for the image to be retrieved from the ImageManager
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Sprite::Render();
+		 *
+		 * \brief	Renders this object to the screen
+		 *
+		 * \note	Call this in your Draw2D() function to ensure correct rendering.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	float Sprite::GetHeight();
+		 *
+		 * \brief	Gets the height of the Sprite
+		 *
+		 * \returns	The height.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	float Sprite::GetWidth();
+		 *
+		 * \brief	Gets the width of the Sprite
+		 *
+		 *
+		 * \returns	The width.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	float Sprite::GetAngle();
+		 *
+		 * \brief	Gets the rotation angle of the Sprite in radians.
+		 *
+		 *
+		 * \returns	The angle in radians.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Sprite::SetAngle(float angle);
+		 *
+		 * \brief	Sets the rotation angle of the Sprite in radians.
+		 *
+		 * \param 	angle	The angle in radians.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Sprite::SetPos(float x, float y);
+		 *
+		 * \brief	Sets the position of the Sprite on the screen
+		 *
+		 * \note	0,0 is the bottom left corner of the screen.
+		 *
+		 * \param 	x	The x coordinate.
+		 * \param 	y	The y coordinate.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Sprite::SetScaleFactor(float scaleX, float scaleY);
+		 *
+		 * \brief	Sets the scale factor of the Sprite
+		 *
+		 * \par Example:
+		 *
+		 * The following example shows how a GameObject called Character could scale its Sprite.
+		 *
+		 * \code
+		 * 		void Character::Update()
+		 * 		{
+		 * 			// scale the sprite to be twice as wide, but the same height
+		 * 			pMySprite->SetScaleFactor(2.0f, 1.0f);
+		 * 		}
+		 * \endcode
+		 *
+		 * \param 	scaleX	The x scaling factor.
+		 * \param 	scaleY	The y scaling factor.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Sprite::SetScalePixel(float width, float height);
+		 *
+		 * \brief	Sets the scale of the sprite in pixels
+		 *
+		 * \par Example:
+		 *
+		 * The following example shows how a GameObject called Character could scale its Sprite.
+		 * 
+		 * \code
+		 * 		void Character::Update()
+		 * 		{
+		 * 			// scale the sprite to be 24x36 pixels
+		 * 			pMySprite->SetScalePixel(24.0f, 36.0f);
+		 * 		}
+		 * \endcode
+		 *
+		 * \param 	width 	The width in pixels.
+		 * \param 	height	The height in pixels.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Sprite::SetCenter(float x, float y);
+		 *
+		 * \brief	Sets the origin of the sprite
+		 *
+		 * \note	0,0 is the top left of the sprite.
+		 * 			
+		 * \par Example:
+		 *
+		 * The following example shows how a GameObject called Character could set the origin of its Sprite.
+		 *
+		 * \code
+		 * 		void Character::Update()
+		 * 		{
+		 * 			// set the origin to the bottom right of the Sprite
+		 * 			pMySprite->SetCenter(pMySprite->GetWidth(), pMySprite->GetHeight());
+		 * 		}
+		 * \endcode
+		 *
+		 * \param 	x	The x coordinate.
+		 * \param 	y	The y coordinate.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	SpriteString
+ *
+ * \brief	A sprite string that can be rendered to the screen.
+ *
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	void SpriteString::Render();
+		 *
+		 * \brief	Renders this object to the screen.
+		 *
+		 * \note	Call this in Draw2D() to ensure correct rendering.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	float SpriteString::GetHeight();
+		 *
+		 * \brief	Gets the total height of the SpriteString
+		 *
+		 *
+		 * \returns	The height.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	float SpriteString::GetWidth();
+		 *
+		 * \brief	Gets the total width of the SpriteString
+		 *
+		 *
+		 * \returns	The width.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	float SpriteString::GetX();
+		 *
+		 * \brief	Gets the x position of the SpriteString
+		 *
+		 *
+		 * \returns	The x position.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	float SpriteString::GetY();
+		 *
+		 * \brief	Gets the y position of the SpriteString
+		 *
+		 *
+		 * \returns	The y position.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void SpriteString::SetPos(float x, float y);
+		 *
+		 * \brief	Sets the position of the SpriteString on the screen.
+		 *
+		 *
+		 * \param 	x	The x coordinate.
+		 * \param 	y	The y coordinate.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void SpriteString::Set(SpriteFont* pFont, std::string string, float x, float y);
+		 *
+		 * \brief	Sets all of the parameters of the SpriteString
+		 *
+		 * \par Example:
+		 *
+		 * The following example shows how a GameObject called Character could set the parameters of its SpriteString.
+		 *
+		 * \code
+		 * 		void Character::Update()
+		 * 		{
+		 * 			// set the SpriteString to say "Hello" in the top left corner using an engine default font
+		 * 			pMySpriteString->Set(FontManager::Get("LEMON_DEFAULT_ARIAL"), "Hello", 0.0f, Lemon::GetHeight());
+		 * 		}
+		 * \endcode
+		 *
+		 * \param			pFont 	The SpriteFont to use.
+		 * \param 		  	string	The string to convert to SpriteString.
+		 * \param 		  	x	  	The x coordinate.
+		 * \param 		  	y	  	The y coordinate.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	TextureManager
+ *
+ * \brief	Asset manager for Textures.
+ *
+ * This class manages the loading and retrieval of Texture objects.
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	static void TextureManager::Load(std::string id, std::string path)
+		 *
+		 * \brief	Loads a Texture specified by the user.
+		 *
+		 * \param 	id  	The identifier to be later used to retrieve the asset.
+		 * \param 	path	The name of the file placed in Assets\Textures.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static Texture* TextureManager::Get(std::string id)
+		 *
+		 * \brief	Retrives the Texture associated with the given identifier.
+		 *
+		 * \param 	id	The identifier associated with the asset.
+		 *
+		 * \returns	a pointer to the Texture.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	Terrain
+ *
+ * \brief	A square plane with varying height defined by a heightmap.
+ *
+ * This class is used to programatically generate terrain models based off of heightmap images.
+ **************************************************************************************************/
+
+ 		 /**********************************************************************************************//**
+		 * \fn	void Terrain::ShowCell(const CellIndex& ind) const
+		 *
+		 * \brief	Renders the cell associated with the given index.
+		 *
+		 * \param 	ind	The index of the cell.
+		 *
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	CellIndex Terrain::CellAt(const Vect& pos) const
+		 *
+		 * \brief	Gives the CellIndex associated with the provided position.
+		 *
+		 * \param 	pos The position to check.
+		 *
+		 * \returns	the CellIndex for the position.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	Vect Terrain::NormAt(const Vect& pos) const
+		 *
+		 * \brief	Gives the normal of the Terrain at the given position.
+		 *
+		 * \param 	pos The position to check.
+		 *
+		 * \returns	the normal for the position.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	float Terrain::HeightAt(const Vect& pos) const
+		 *
+		 * \brief	Gives the height of the Terrain at the given position.
+		 *
+		 * \param 	pos The position to check.
+		 *
+		 * \returns	the height for the position.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	CollisionVolumeAABB& Terrain::CellAABB(const CellIndex& cell) const
+		 *
+		 * \brief	Gives the CollisionVolumeAABB of the given Terrain cell.
+		 *
+		 * \param 	cell The associated cell.
+		 *
+		 * \returns	CollisionVolumeAABB of the given cell.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	TerrainManager
+ *
+ * \brief	Asset manager for Terrains.
+ *
+ * This class manages the loading and retrieval of Terrain objects.
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	static void TerrainManager::Load(std::string id, std::string path, std::string texID, float sideLen, float maxHeight, float yTrans, int repeatU, int repeatV)
+		 *
+		 * \brief	Loads a Terrain specified by the user.
+		 *
+		 * \param 	id  		The identifier to be later used to retrieve the asset.
+		 * \param 	path		The name of the heightmap placed in Assets\Heightmaps.
+		 * \param 	texID		The identifier of the texture.
+		 * \param 	sideLen		The length of one side of the terrain in engine units.
+		 * \param 	maxHeight	The maximum height that the heightmap can represent.
+		 * \param 	yTrans		The y offset applied to the terrain.
+		 * \param 	repeatU		The number of times the texture will repeat on the U axis.
+		 * \param 	repeatV		The number of times the texture will repeat on the V axis.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static Terrain* TerrainManager::Get(std::string id)
+		 *
+		 * \brief	Retrives the Terrain associated with the given identifier.
+		 *
+		 * \param 	id	The identifier associated with the asset.
+		 *
+		 * \returns	a pointer to the Terrain.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	TimeManager
+ *
+ * \brief	Manages game time.
+ *
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	static float TimeManager::GetTime();
+		 *
+		 * \brief	Gets the current time
+		 *
+		 *
+		 * \returns	The time.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	static float TimeManager::GetFrameTime();
+		 *
+		 * \brief	Gets the frame time, length of the previous frame
+		 *
+		 * \returns	The frame time.
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	Updatable
+ *
+ * \brief	A GameObject that can opt in to recieve update calls.
+ *
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		 * \fn	void Updatable::SubmitRegistration();
+		 *
+		 * \brief	Submit a request to the scene to recieve update calls.
+		 *
+		 * Once submitted, update calls will begin at the top of the following frame.
+		 *
+		 * \par Example:
+		 *
+		 * The following example shows how a GameObject called Character could register for update calls.
+		 *
+		 * \code
+		 * 		Character::Character()
+		 * 		{
+		 * 			// object construction
+		 *
+		 *			// register for update calls
+		 *			Updatable::SubmitRegistration();
+		 * 		}
+		 * \endcode
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	void Updatable::SubmitDeregistration();
+		 *
+		 * \brief	Submit a request to the scene to deregister for update calls.
+		 *
+		 * Once submitted, update calls will cease at the top of the next frame.
+		 **************************************************************************************************/
+
+		 /**********************************************************************************************//**
+		 * \fn	virtual void Updatable::Update()
+		 *
+		 * \brief	Updates this object
+		 * 			
+		 * Called every frame once the object is registered. Perform any necessary logic processing here.
+		 *
+		 * \par Example
+		 *
+		 * The following example shows how a GameObject called Character could use Update() to move forward in space.
+		 *
+		 * \code
+		 * 		void Character::Update()
+		 * 		{
+		 * 			// compute new world matrix
+		 * 			myWorld = Matrix(TRANS, 0.0f, 0.0f, 5.0f) * myWorld;
+		 * 			
+		 *			// update my graphics object with new world matrix
+		 * 			pMyGraphicsObj->SetWorld(myWorld);
+		 * 		}
+		 * \endcode
+		 **************************************************************************************************/
+
+
+/**********************************************************************************************//**
+ * \class	Visualizer
+ *
+ * \brief	A tool for visualizing collision volumes.
+ *
+ **************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		* \fn	static void Visualizer::ShowPoint(const Vect& pos, const Vect& color = m_defaultColor)
+		*
+		* \brief	Renders a point to the screen.
+		*
+		* The point is rendered in wireframe using the color passed in, or the default yellow color.
+		*
+		* \param 	pos		The point.
+		* \param 	color  	(Optional) The color.
+		**************************************************************************************************/
+
+		/**********************************************************************************************//**
+		* \fn	static void Visualizer::ShowSegment(const Vect& pos1, const Vect& pos2, const Vect& color = m_defaultColor)
+		*
+		* \brief	Renders a line segment to the screen.
+		*
+		* The segment is rendered in wireframe using the color passed in, or the default yellow color.
+		*
+		* \param 	pos1	Point 1.
+		* \param 	pos2	Point 2.
+		* \param 	color  	(Optional) The color.
+		**************************************************************************************************/
+
+ 		/**********************************************************************************************//**
+		* \fn	static void Visualizer::ShowCollisionVolume(const CollisionVolume& colVol, const Vect& color = m_defaultColor)
+		*
+		* \brief	Renders a CollisionVolume to the screen.
+		*
+		* The CollisionVolume is rendered in wireframe using the color passed in, or the default yellow color.
+		*
+		* \param 	colVol	The CollisionVolume.
+		* \param 	color  	(Optional) The color.
+		**************************************************************************************************/
+
+		/**********************************************************************************************//**
+		* \fn	static void Visualizer::ShowBSphere(const CollisionVolumeBSphere& bSphere, const Vect& color = m_defaultColor)
+		*
+		* \brief	Renders a bounding sphere to the screen.
+		*
+		* The bounding sphere is rendered in wireframe using the color passed in, or the default yellow color.
+		*
+		* \param 	bSphere	The sphere.
+		* \param 	color  	(Optional) The color.
+		**************************************************************************************************/
+
+		/**********************************************************************************************//**
+		* \fn	static void Visualizer::ShowAABB(const CollisionVolumeAABB& aabb, const Vect& color = m_defaultColor)
+		*
+		* \brief	Renders an axis aligned bounding box to the screen.
+		*
+		* The axis aligned bounding box is rendered in wireframe using the color passed in, or the default yellow color.
+		*
+		* \param 	aabb	The axis aligned bounding box.
+		* \param 	color  	(Optional) The color.
+		**************************************************************************************************/
+
+		/**********************************************************************************************//**
+		* \fn	static void Visualizer::ShowOBB(const CollisionVolumeOBB& obb, const Vect& color = m_defaultColor)
+		*
+		* \brief	Renders an oriented aligned bounding box to the screen.
+		*
+		* The oriented bounding box is rendered in wireframe using the color passed in, or the default yellow color.
+		*
+		* \param 	obb		The oriented bounding box.
+		* \param 	color  	(Optional) The color.
+		**************************************************************************************************/

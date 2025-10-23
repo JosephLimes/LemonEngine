@@ -1,0 +1,10 @@
+<map id="TextureManager" name="TextureManager">
+<area shape="rect" id="Node000001" title="Asset manager for Textures." alt="" coords="5,423,186,812"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="188,576,206,591,213,617,210,635,202,648,198,646,205,633,208,617,201,594,184,580"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="28,273,164,359"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="98,358,98,406,93,406,93,358"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="62,140,130,209"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="98,209,98,257,93,257,93,209"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="38,5,153,91"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="98,106,98,140,93,140,93,106"/>
+</map>

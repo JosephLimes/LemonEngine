@@ -1,0 +1,10 @@
+<map id="ImageManager" name="ImageManager">
+<area shape="rect" id="Node000001" title="Asset manager for Images." alt="" coords="5,423,180,935"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="182,627,192,634,200,645,205,660,207,679,204,702,196,719,191,717,199,701,202,679,200,661,195,648,188,638,179,631"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="25,273,161,359"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="96,359,96,405,90,405,90,359"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="58,140,127,209"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="96,209,96,257,90,257,90,209"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="36,5,150,91"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="96,106,96,140,90,140,90,106"/>
+</map>

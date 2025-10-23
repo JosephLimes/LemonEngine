@@ -1,0 +1,7 @@
+<map id="InputStrategy" name="InputStrategy">
+<area shape="rect" id="Node000001" title=" " alt="" coords="115,5,305,299"/>
+<area shape="rect" id="Node000002" href="$class_standard_input.html" title=" " alt="" coords="5,347,198,624"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,314,149,348,144,346,155,312"/>
+<area shape="rect" id="Node000003" href="$class_typed_input.html" title=" " alt="" coords="222,347,413,624"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="264,312,276,346,271,348,259,314"/>
+</map>

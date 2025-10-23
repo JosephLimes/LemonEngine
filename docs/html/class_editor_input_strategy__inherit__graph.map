@@ -1,0 +1,13 @@
+<map id="EditorInputStrategy" name="EditorInputStrategy">
+<area shape="rect" id="Node000001" title=" " alt="" coords="420,5,619,277"/>
+<area shape="rect" id="Node000002" href="$class_editor_input_camera.html" title=" " alt="" coords="5,347,191,613"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="408,195,305,252,253,288,205,327,185,349,181,345,202,323,250,284,302,248,406,190"/>
+<area shape="rect" id="Node000003" href="$class_editor_input_marker.html" title=" " alt="" coords="216,347,402,613"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="430,291,394,348,389,345,425,288"/>
+<area shape="rect" id="Node000004" href="$class_manip_rot.html" title=" " alt="" coords="427,325,613,635"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="522,292,522,326,517,326,517,292"/>
+<area shape="rect" id="Node000005" href="$class_manip_scale.html" title=" " alt="" coords="637,325,837,635"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="617,288,640,324,636,327,612,291"/>
+<area shape="rect" id="Node000006" href="$class_manip_trans.html" title=" " alt="" coords="861,325,1061,635"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="634,188,743,246,799,283,851,323,863,335,859,339,847,327,796,287,741,251,631,193"/>
+</map>

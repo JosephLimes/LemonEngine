@@ -1,0 +1,5 @@
+<map id="SceneChangeNull" name="SceneChangeNull">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,272,202,523"/>
+<area shape="rect" id="Node000002" href="$class_scene_change.html" title=" " alt="" coords="17,5,191,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,239,106,272,101,272,101,239"/>
+</map>

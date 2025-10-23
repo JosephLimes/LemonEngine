@@ -1,0 +1,7 @@
+<map id="LevelObjectBaseFactory" name="LevelObjectBaseFactory">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,273,212,599"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="74,140,143,209"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,209,112,256,106,256,106,209"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="52,5,166,91"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="112,106,112,140,106,140,106,106"/>
+</map>

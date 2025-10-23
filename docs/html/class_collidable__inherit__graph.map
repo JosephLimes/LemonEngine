@@ -1,0 +1,13 @@
+<map id="Collidable" name="Collidable">
+<area shape="rect" id="Node000001" title="A GameObject that can opt into collision testing." alt="" coords="228,5,434,741"/>
+<area shape="rect" id="Node000002" href="$class_game_object.html" title="A game object. These are objects that recieve the majority of services that the engine provides." alt="" coords="210,789,452,1189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="334,756,334,789,328,789,328,756"/>
+<area shape="rect" id="Node000003" href="$class_editor_admin.html" title=" " alt="" coords="5,1237,211,2160"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="239,1204,227,1238,214,1278,209,1276,222,1236,234,1202"/>
+<area shape="rect" id="Node000004" href="$class_editor_u_i.html" title=" " alt="" coords="236,1451,426,1947"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="334,1204,334,1451,328,1451,328,1204"/>
+<area shape="rect" id="Node000005" href="$class_level_object.html" title="A GameObject that can be used in the editor." alt="" coords="450,1504,657,1893"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="428,1202,440,1236,481,1371,515,1504,510,1505,476,1373,435,1238,423,1204"/>
+<area shape="rect" id="Node000006" href="$class_level_object_null.html" title=" " alt="" coords="464,2208,644,2517"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="556,1908,556,2208,551,2208,551,1908"/>
+</map>

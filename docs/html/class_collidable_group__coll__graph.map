@@ -1,0 +1,9 @@
+<map id="CollidableGroup" name="CollidableGroup">
+<area shape="rect" id="Node000001" title=" " alt="" coords="58,1313,268,1697"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,911,152,1001"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,1001,80,1131,85,1210,95,1289,97,1296,92,1297,90,1290,80,1211,75,1131,74,1001"/>
+<area shape="rect" id="Node000003" href="$class_collision_volume_a_a_b_b.html" title="An axis aligned bounding box used for collision processing." alt="" coords="177,663,370,1249"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="242,1249,233,1290,232,1297,227,1296,228,1289,236,1248"/>
+<area shape="rect" id="Node000004" href="$class_collision_volume.html" title="This is the base class that various GameObject collision volumes derive from." alt="" coords="170,5,377,613"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="276,628,276,663,271,663,271,628"/>
+</map>

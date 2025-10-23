@@ -1,0 +1,15 @@
+<map id="EditorMarker" name="EditorMarker">
+<area shape="rect" id="Node000001" title=" " alt="" coords="456,1237,674,2053"/>
+<area shape="rect" id="Node000002" href="$class_game_object.html" title="A game object. These are objects that recieve the majority of services that the engine provides." alt="" coords="444,789,686,1189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="568,1204,568,1237,562,1237,562,1204"/>
+<area shape="rect" id="Node000003" href="$class_alarmable.html" title="A GameObject that is capable of setting alarms." alt="" coords="5,131,218,616"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="173,629,199,687,231,740,278,795,332,844,390,887,446,923,443,927,387,891,329,848,274,799,227,743,194,689,168,631"/>
+<area shape="rect" id="Node000004" href="$class_drawable.html" title="A GameObject that can opt in to recieve draw calls." alt="" coords="242,133,438,613"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="412,626,452,740,471,789,466,791,447,742,407,628"/>
+<area shape="rect" id="Node000005" href="$class_updatable.html" title="A GameObject that can opt in to recieve update calls." alt="" coords="462,165,669,581"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="568,596,568,790,562,790,562,596"/>
+<area shape="rect" id="Node000006" href="$class_inputable.html" title="An inputable. These are game objects that can recieve callbacks for keyboard input events." alt="" coords="693,11,960,736"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="690,729,684,742,662,791,657,788,679,740,685,727"/>
+<area shape="rect" id="Node000007" href="$class_collidable.html" title="A GameObject that can opt into collision testing." alt="" coords="984,5,1189,741"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="977,738,974,743,944,777,910,809,837,865,760,910,687,945,685,940,757,905,834,860,907,805,940,774,970,740,973,735"/>
+</map>

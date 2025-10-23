@@ -1,0 +1,5 @@
+<map id="CollisionDispatchBase" name="CollisionDispatchBase">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,230,288"/>
+<area shape="rect" id="Node000002" href="$class_collision_dispatch.html" title=" " alt="" coords="19,336,216,635"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,303,120,336,115,336,115,303"/>
+</map>

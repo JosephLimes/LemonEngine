@@ -1,0 +1,9 @@
+<map id="CollisionVolume" name="CollisionVolume">
+<area shape="rect" id="Node000001" title="This is the base class that various GameObject collision volumes derive from." alt="" coords="226,5,433,613"/>
+<area shape="rect" id="Node000002" href="$class_collision_volume_a_a_b_b.html" title="An axis aligned bounding box used for collision processing." alt="" coords="5,720,198,1307"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,626,212,662,193,721,188,720,207,661,219,624"/>
+<area shape="rect" id="Node000003" href="$class_collision_volume_b_sphere.html" title="A bounding sphere used for collision processing." alt="" coords="222,661,438,1365"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="332,628,332,662,327,662,327,628"/>
+<area shape="rect" id="Node000004" href="$class_collision_volume_o_b_b.html" title="An oriented bounding box used for collision processing." alt="" coords="461,731,646,1296"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="441,624,452,661,474,730,469,732,447,662,435,626"/>
+</map>

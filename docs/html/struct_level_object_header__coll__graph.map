@@ -1,0 +1,5 @@
+<map id="LevelObjectHeader" name="LevelObjectHeader">
+<area shape="rect" id="Node000001" title=" " alt="" coords="51,427,173,496"/>
+<area shape="rect" id="Node000002" href="$struct_level_object_flags.html" title=" " alt="" coords="5,5,218,363"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,362,114,410,109,410,109,362"/>
+</map>

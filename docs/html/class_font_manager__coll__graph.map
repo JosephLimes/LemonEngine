@@ -1,0 +1,15 @@
+<map id="FontManager" name="FontManager">
+<area shape="rect" id="Node000001" title="Asset manager for SpriteFonts." alt="" coords="112,956,289,1345"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="291,1109,309,1124,316,1151,313,1169,305,1182,301,1179,308,1167,311,1151,304,1127,287,1113"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="133,807,268,892"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="203,892,203,939,198,939,198,892"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="210,172,279,241"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="255,240,271,335,284,471,286,548,282,628,271,707,251,783,247,793,242,791,246,782,265,706,276,627,280,548,279,472,266,336,249,241"/>
+<area shape="rect" id="Node000005" href="$class_sprite_font.html" title=" " alt="" coords="49,337,219,743"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="224,242,193,298,184,323,179,321,188,296,219,240"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="187,5,302,91"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="247,105,247,172,242,172,242,105"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="177,742,186,782,188,790,183,791,181,783,172,743"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,140,164,273"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="86,273,89,313,90,320,85,321,84,314,81,273"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="Updatable" name="Updatable">
+<area shape="rect" id="Node000001" title="A GameObject that can opt in to recieve update calls." alt="" coords="228,5,434,421"/>
+<area shape="rect" id="Node000002" href="$class_game_object.html" title="A game object. These are objects that recieve the majority of services that the engine provides." alt="" coords="210,469,452,869"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="334,436,334,470,328,470,328,436"/>
+<area shape="rect" id="Node000003" href="$class_editor_admin.html" title=" " alt="" coords="5,917,211,1840"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="239,884,227,918,214,958,209,956,222,916,234,882"/>
+<area shape="rect" id="Node000004" href="$class_editor_u_i.html" title=" " alt="" coords="236,1131,426,1627"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="334,884,334,1131,328,1131,328,884"/>
+<area shape="rect" id="Node000005" href="$class_level_object.html" title="A GameObject that can be used in the editor." alt="" coords="450,1184,657,1573"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="428,882,440,916,481,1051,515,1184,510,1185,476,1053,435,918,423,884"/>
+<area shape="rect" id="Node000006" href="$class_level_object_null.html" title=" " alt="" coords="464,1888,644,2197"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="556,1588,556,1888,551,1888,551,1588"/>
+</map>

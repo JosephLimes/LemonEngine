@@ -1,0 +1,6 @@
+<map id="TimeManager" name="TimeManager">
+<area shape="rect" id="Node000001" title="Manages game time." alt="" coords="11,539,195,907"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="196,683,214,697,221,723,219,739,211,752,207,749,214,737,216,723,210,700,193,688"/>
+<area shape="rect" id="Node000002" href="$class_freeze_time.html" title=" " alt="" coords="5,5,200,475"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="106,475,106,522,100,522,100,475"/>
+</map>

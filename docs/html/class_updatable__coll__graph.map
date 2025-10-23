@@ -1,0 +1,15 @@
+<map id="Updatable" name="Updatable">
+<area shape="rect" id="Node000001" title="A GameObject that can opt in to recieve update calls." alt="" coords="216,5,398,309"/>
+<area shape="rect" id="Node000002" href="$class_update_registration_command.html" title=" " alt="" coords="254,373,502,661"/>
+<area shape="poly" id="edge3_Node000002_Node000001" title=" " alt="" coords="362,308,367,333,371,356,366,357,362,334,357,310"/>
+<area shape="rect" id="Node000004" href="$class_update_deregistration_command.html" title=" " alt="" coords="526,373,785,661"/>
+<area shape="poly" id="edge6_Node000004_Node000001" title=" " alt="" coords="400,250,516,369,512,373,397,254"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,483,151,552"/>
+<area shape="poly" id="edge8_Node000005_Node000001" title=" " alt="" coords="219,247,182,289,150,335,117,402,94,467,89,466,112,400,146,332,178,286,215,243"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="252,406,234,379,220,350,215,327,220,326,225,348,239,376,256,403"/>
+<area shape="rect" id="Node000003" href="$class_command.html" title=" " alt="" coords="733,56,925,259"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="823,274,807,316,794,335,778,351,756,363,725,368,648,369,571,367,539,369,515,376,503,382,501,378,513,371,538,364,571,361,648,363,724,363,754,358,775,347,790,332,802,314,818,272"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="845,274,841,313,830,350,811,385,787,416,783,413,807,382,825,348,836,312,840,273"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="630,375,608,335,566,290,517,253,465,222,413,198,415,193,467,217,520,248,570,286,612,332,635,372"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="53,484,36,451,23,412,18,372,21,351,29,332,63,286,105,248,152,218,200,194,202,198,155,222,108,253,66,290,34,335,27,353,24,372,28,411,41,449,58,482"/>
+</map>

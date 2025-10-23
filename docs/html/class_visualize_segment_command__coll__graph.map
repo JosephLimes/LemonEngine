@@ -1,0 +1,5 @@
+<map id="VisualizeSegmentCommand" name="VisualizeSegmentCommand">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,256,234,656"/>
+<area shape="rect" id="Node000002" href="$class_command.html" title=" " alt="" coords="24,5,216,208"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,223,122,256,117,256,117,223"/>
+</map>

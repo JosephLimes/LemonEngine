@@ -1,0 +1,19 @@
+<map id="ScreenLogSpriteStringPool" name="ScreenLogSpriteStringPool">
+<area shape="rect" id="Node000001" title=" " alt="" coords="172,2103,404,2423"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="203,1969,373,2039"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="291,2038,291,2085,285,2085,285,2038"/>
+<area shape="rect" id="Node000003" href="$class_sprite_string.html" title="A sprite string that can be rendered to the screen." alt="" coords="202,1409,374,1905"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="291,1905,291,1952,285,1952,285,1905"/>
+<area shape="rect" id="Node000004" href="$class_sprite_font.html" title=" " alt="" coords="115,940,285,1345"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="237,1345,245,1392,240,1393,232,1346"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="28,473,97,543"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="67,542,80,688,93,782,111,875,123,923,118,924,105,877,87,782,75,689,62,543"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,5,120,91"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="65,105,65,474,60,474,60,105"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="121,441,279,575"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="203,575,203,923,197,923,197,575"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="310,1108,450,1177"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="377,1178,338,1393,333,1392,371,1177"/>
+<area shape="rect" id="Node000009" href="$class_sprite.html" title="A sprite, a 2D object with an image that can be rendered." alt="" coords="304,140,462,876"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="384,876,383,1091,378,1091,378,876"/>
+</map>

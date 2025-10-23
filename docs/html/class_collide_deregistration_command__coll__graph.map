@@ -1,0 +1,19 @@
+<map id="CollideDeregistrationCommand" name="CollideDeregistrationCommand">
+<area shape="rect" id="Node000001" title=" " alt="" coords="293,871,550,1159"/>
+<area shape="rect" id="Node000003" href="$class_collidable.html" title="A GameObject that can opt into collision testing." alt="" coords="199,1431,404,1980"/>
+<area shape="poly" id="edge6_Node000003_Node000001" title=" " alt="" coords="422,1159,414,1280,396,1407,395,1414,390,1413,391,1406,408,1280,417,1158"/>
+<area shape="rect" id="Node000002" href="$class_command.html" title=" " alt="" coords="175,208,367,411"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="298,425,394,871,389,872,293,426"/>
+<area shape="rect" id="Node000004" href="$class_collide_registration_command.html" title=" " alt="" coords="5,2044,251,2332"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="206,425,153,538,130,600,112,663,94,758,79,854,60,1051,53,1247,55,1438,64,1619,77,1783,108,2044,103,2045,72,1784,58,1619,50,1438,48,1247,55,1050,74,854,89,757,107,662,125,598,148,536,202,423"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="296,1431,301,1390,325,1280,357,1174,363,1176,330,1281,306,1391,301,1431"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="289,1981,275,2021,262,2046,257,2044,270,2019,284,1979"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="120,2044,128,2003,154,1932,188,1864,193,1866,159,1934,133,2005,125,2045"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="122,969,268,1060"/>
+<area shape="poly" id="edge7_Node000003_Node000005" title=" " alt="" coords="195,1060,194,1214,199,1310,211,1406,212,1413,207,1414,206,1407,194,1310,189,1214,190,1060"/>
+<area shape="rect" id="Node000006" href="$class_collision_volume.html" title="This is the base class that various GameObject collision volumes derive from." alt="" coords="553,5,760,613"/>
+<area shape="poly" id="edge8_Node000003_Node000006" title=" " alt="" coords="618,613,613,663,609,736,607,828,606,1041,602,1149,593,1251,579,1339,569,1376,556,1408,527,1460,493,1510,418,1599,414,1595,488,1507,522,1457,551,1406,563,1375,574,1338,588,1250,596,1149,600,1040,602,827,603,736,608,662,613,613"/>
+<area shape="rect" id="Node000007" href="$class_collision_volume_b_sphere.html" title="A bounding sphere used for collision processing." alt="" coords="748,663,964,1367"/>
+<area shape="poly" id="edge10_Node000007_Node000006" title=" " alt="" coords="749,627,759,662,754,664,744,628"/>
+<area shape="poly" id="edge9_Node000003_Node000007" title=" " alt="" coords="751,1340,732,1368,698,1411,661,1451,580,1525,497,1588,420,1640,417,1635,494,1584,577,1521,658,1447,694,1407,728,1365,746,1337"/>
+</map>

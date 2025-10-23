@@ -1,0 +1,5 @@
+<map id="SceneTerrainActive" name="SceneTerrainActive">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,384,217,816"/>
+<area shape="rect" id="Node000002" href="$class_scene_terrain.html" title=" " alt="" coords="13,5,210,336"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,351,114,384,109,384,109,351"/>
+</map>

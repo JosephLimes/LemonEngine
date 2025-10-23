@@ -1,0 +1,7 @@
+<map id="Scene" name="Scene">
+<area shape="rect" id="Node000001" title="A scene manages GameObjects and their services." alt="" coords="59,5,321,1387"/>
+<area shape="rect" id="Node000002" href="$class_editor_scene.html" title=" " alt="" coords="5,1435,175,1680"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,1402,107,1435,102,1435,106,1401"/>
+<area shape="rect" id="Node000003" href="$class_scene_null.html" title=" " alt="" coords="200,1467,384,1648"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="276,1401,284,1466,278,1467,271,1402"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="SceneChange" name="SceneChange">
+<area shape="rect" id="Node000001" title=" " alt="" coords="133,5,307,224"/>
+<area shape="rect" id="Node000002" href="$class_scene_change_active.html" title=" " alt="" coords="5,272,210,560"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,239,164,273,159,271,172,237"/>
+<area shape="rect" id="Node000003" href="$class_scene_change_null.html" title=" " alt="" coords="235,291,432,541"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="269,237,289,290,284,292,264,239"/>
+</map>

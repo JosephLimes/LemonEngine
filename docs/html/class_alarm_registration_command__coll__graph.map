@@ -1,0 +1,19 @@
+<map id="AlarmRegistrationCommand" name="AlarmRegistrationCommand">
+<area shape="rect" id="Node000001" title=" " alt="" coords="91,272,330,635"/>
+<area shape="rect" id="Node000004" href="$struct_alarmable_1_1_alarm_data.html" title=" " alt="" coords="279,699,419,784"/>
+<area shape="poly" id="edge6_Node000004_Node000001" title=" " alt="" coords="206,633,224,673,240,687,266,702,263,707,236,691,220,676,202,636"/>
+<area shape="rect" id="Node000002" href="$class_command.html" title=" " alt="" coords="5,5,197,208"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,222,156,271,151,273,135,223"/>
+<area shape="rect" id="Node000007" href="$class_alarm_deregistration_command.html" title=" " alt="" coords="63,1360,313,1664"/>
+<area shape="poly" id="edge8_Node000007_Node000002" title=" " alt="" coords="80,223,63,334,56,452,56,1073,61,1148,76,1222,96,1294,120,1359,115,1361,91,1295,71,1223,56,1148,51,1073,51,452,58,333,75,222"/>
+<area shape="rect" id="Node000003" href="$class_alarmable.html" title="A GameObject that is capable of setting alarms." alt="" coords="370,848,582,1296"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="368,857,361,850,337,834,312,826,263,824,239,823,216,819,194,807,174,786,156,755,147,722,142,687,143,652,149,652,148,687,152,720,161,753,178,782,197,803,218,814,240,818,264,819,313,821,339,829,364,846,372,853"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="372,1268,353,1297,318,1348,314,1345,348,1295,367,1265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="368,783,387,832,382,834,363,785"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="383,403,513,504"/>
+<area shape="poly" id="edge10_Node000003_Node000005" title=" " alt="" coords="453,503,468,831,462,831,448,504"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="434,505,372,684,367,682,429,503"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="373,32,523,181"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="451,181,451,386,445,386,445,181"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="151,1361,137,1243,133,1178,134,1111,140,1043,152,975,171,909,198,847,226,810,263,781,266,785,230,813,203,849,176,911,157,976,145,1043,139,1111,139,1178,142,1243,157,1360"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="UpdatableManager" name="UpdatableManager">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,139,202,448"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="172,5,318,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,66,150,80,131,100,117,124,112,122,126,97,147,76,171,61"/>
+<area shape="rect" id="Node000003" href="$class_updatable.html" title="A GameObject that can opt in to recieve update calls." alt="" coords="238,141,420,445"/>
+<area shape="poly" id="edge9_Node000003_Node000002" title=" " alt="" coords="295,73,314,97,325,124,320,126,310,100,291,76"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="252,142,244,115,241,92,246,91,249,114,257,141"/>
+<area shape="rect" id="Node000004" href="$class_update_registration_command.html" title=" " alt="" coords="470,512,718,800"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="421,338,461,363,501,394,537,430,567,471,579,495,575,497,563,473,533,433,497,398,458,368,419,342"/>
+<area shape="rect" id="Node000006" href="$class_update_deregistration_command.html" title=" " alt="" coords="108,512,367,800"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="240,430,216,450,194,459,174,460,156,462,141,474,130,497,126,494,136,470,154,457,173,454,193,454,213,446,237,426"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="469,547,421,490,402,461,407,458,425,486,473,543"/>
+<area shape="rect" id="Node000005" href="$class_command.html" title=" " alt="" coords="626,192,818,395"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="736,410,733,450,724,489,714,513,709,511,719,487,728,449,731,410"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="716,410,700,453,687,473,671,490,653,500,628,505,567,508,505,509,459,515,413,535,368,560,365,555,410,530,458,509,505,503,567,503,627,500,651,495,668,486,683,470,695,451,711,408"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="229,512,236,471,239,461,244,462,241,473,235,513"/>
+</map>

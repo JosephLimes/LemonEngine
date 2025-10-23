@@ -1,0 +1,14 @@
+<map id="Area" name="Area">
+<area shape="rect" id="Node000001" title=" " alt="" coords="181,2439,349,2785"/>
+<area shape="rect" id="Node000005" href="$class_area_iterator.html" title=" " alt="" coords="80,2865,269,3329"/>
+<area shape="poly" id="edge5_Node000005_Node000001" title=" " alt="" coords="184,2773,173,2810,166,2849,161,2848,168,2809,178,2771"/>
+<area shape="rect" id="Node000002" href="$class_terrain.html" title="A square plane with varying height defined by a heightmap." alt="" coords="145,1313,384,2375"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="268,2374,268,2422,262,2422,262,2374"/>
+<area shape="rect" id="Node000003" href="$class_collision_volume_a_a_b_b.html" title="An axis aligned bounding box used for collision processing." alt="" coords="168,663,361,1249"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="268,1249,268,1296,262,1296,262,1249"/>
+<area shape="rect" id="Node000004" href="$class_collision_volume.html" title="This is the base class that various GameObject collision volumes derive from." alt="" coords="161,5,368,613"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="268,628,268,663,262,663,262,628"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="228,2865,233,2841,240,2801,245,2802,238,2842,233,2866"/>
+<area shape="rect" id="Node000006" href="$struct_terrain_1_1_cell_index.html" title=" " alt="" coords="5,2521,156,2703"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="94,2702,116,2841,117,2848,112,2849,111,2842,89,2703"/>
+</map>

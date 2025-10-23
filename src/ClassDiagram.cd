@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Input &amp; Object Manipulation Strategy&#xD;&#xA;">
+    <Position X="70.906" Y="10.529" Height="0.527" Width="1.602" />
+  </Comment>
+  <Comment CommentText="Collision">
+    <Position X="37.903" Y="7.344" Height="0.436" Width="0.876" />
+  </Comment>
+  <Class Name="EditorAdmin">
+    <Position X="69" Y="12" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="m_pManipTrans" Type="ManipTrans" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="70.5" Y="15.25" />
+        <Point X="77" Y="15.25" />
+        <Point X="77" Y="14.454" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="m_pManipRot" Type="ManipRot" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="70.5" Y="14.919" />
+        <Point X="74.75" Y="14.919" />
+        <Point X="74.75" Y="14.454" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="m_pInputCam" Type="EditorInputCamera" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="70.5" Y="15.466" />
+        <Point X="79" Y="15.466" />
+        <Point X="79" Y="13.81" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>NIxCUA4IBYAACQAIAGBECAAAEQEAAkAEKAhthZBHACA=</HashCode>
+      <FileName>Lemon\Tools\Editor\EditorAdmin.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_pManipTrans" />
+      <Field Name="m_pManipRot" />
+      <Field Name="m_pManipScale" />
+      <Field Name="m_pManipActive" />
+      <Field Name="m_pInputCam" />
+      <Field Name="m_pInputMarker" />
+      <Field Name="m_pInputActive" />
+      <Field Name="m_pInputPrev" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="EditorInputStrategy">
+    <Position X="73.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAgAAAAAABAAAAAABAAAAAAAgAAAAEAA=</HashCode>
+      <FileName>Lemon\Tools\Editor\EditorInputStrategy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManipRot">
+    <Position X="74" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAwAAAAAEAAAAAAAAAAAAAAAgAAAgEAA=</HashCode>
+      <FileName>Lemon\Tools\Editor\ManipRot.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManipTrans">
+    <Position X="76.25" Y="12" Width="1.5" />
+    <InheritanceLine Type="EditorInputStrategy" ManuallyRouted="true">
+      <Path>
+        <Point X="74" Y="10.324" />
+        <Point X="74" Y="11.596" />
+        <Point X="77" Y="11.596" />
+        <Point X="77" Y="12" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgCAAAAAAAAAAAAAAIAAAAAgAACAEAA=</HashCode>
+      <FileName>Lemon\Tools\Editor\ManipTrans.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManipScale">
+    <Position X="72" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAQAAAAQAAIAAAAAAgAAAAEAA=</HashCode>
+      <FileName>Lemon\Tools\Editor\ManipScale.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EditorInputCamera">
+    <Position X="78.25" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgIAAgEAA=</HashCode>
+      <FileName>Lemon\Tools\Editor\EditorInputCamera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EditorInputMarker">
+    <Position X="80" Y="12" Width="1.5" />
+    <InheritanceLine Type="EditorInputStrategy" ManuallyRouted="true">
+      <Path>
+        <Point X="74" Y="10.324" />
+        <Point X="74" Y="11.596" />
+        <Point X="80.75" Y="11.596" />
+        <Point X="80.75" Y="12" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAEAAAAAAAAAAAAAAAAAAAAgAAAAEAA=</HashCode>
+      <FileName>Lemon\Tools\Editor\EditorInputMarker.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Collidable">
+    <Position X="36.25" Y="8.5" Width="2.25" />
+    <NestedTypes>
+      <Enum Name="Collidable::Volumes" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lemon\GameObject\Collidable.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BQBAEAYAAAAAgAAgIACACAECAAABAEEAACAgAAQACAA=</HashCode>
+      <FileName>Lemon\GameObject\Collidable.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_pBSphere" />
+      <Field Name="m_pCollisionVolume" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CollisionVolumeBSphere">
+    <Position X="39.75" Y="10.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAIAAAEAAIgAIAAIAAAAAAAgABgAAgAAAA=</HashCode>
+      <FileName>Lemon\Collision\Volumes\CollisionVolumeBSphere.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CollisionVolume">
+    <Position X="40.5" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAIgAEAAAAAAAAAAgABgAAAAAAA=</HashCode>
+      <FileName>Lemon\Collision\Volumes\CollisionVolume.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CollisionVolumeOBB">
+    <Position X="44.75" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAEAAAgAgAKBAEIAIgAAAAIAAAAAAAgABhABAAAQA=</HashCode>
+      <FileName>Lemon\Collision\Volumes\CollisionVolumeOBB.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CollisionVolumeAABB">
+    <Position X="42.5" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AFAgEAAAgAgALAAEIAIgAAAAIAAAAAAAgABhABAAAQA=</HashCode>
+      <FileName>Lemon\Collision\Volumes\CollisionVolumeAABB.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CollisionManager">
+    <Position X="47" Y="8.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAACARAAAAABQAAAAAAAAggAACAAgoACAAAQ=</HashCode>
+      <FileName>Lemon\Scene\CollisionManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CollidableGroup">
+    <Position X="49.25" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAEAAgAAAAAAQAAARABAAAABAAAAAAAgAAAAQAA=</HashCode>
+      <FileName>Lemon\Collision\CollidableGroup.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terrain">
+    <Position X="29.5" Y="5.75" Width="2" />
+    <NestedTypes>
+      <Struct Name="Terrain::CellIndex" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lemon\Terrain\Terrain.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAADAACBAkAKgAAyABAAJAAAAAAgADoEEKoGEAYAAA=</HashCode>
+      <FileName>Lemon\Terrain\Terrain.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneTerrainManager">
+    <Position X="19.75" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAhAAAQAEAAAAAAAAAACAAAAgQgAAAAA=</HashCode>
+      <FileName>Lemon\Scene\SceneTerrainManager.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_pNullTerrain" />
+      <Field Name="m_pCurrentTerrain" />
+      <Field Name="m_pActiveTerrain" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SceneTerrain">
+    <Position X="25.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAhAAAAAEAAAAAAAAhAAAAAAgQAAAAAA=</HashCode>
+      <FileName>Lemon\Scene\SceneTerrain.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_pTerrain" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SceneTerrainActive">
+    <Position X="23.75" Y="8.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAACgAAAAAEAAAAAAAAgAAAAAAgQAAAAAA=</HashCode>
+      <FileName>Lemon\Scene\SceneTerrainActive.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneTerrainNull">
+    <Position X="26.5" Y="8.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgEAAAAEAAAAAAAAgACQAAAgQAAAAAA=</HashCode>
+      <FileName>Lemon\Scene\SceneTerrainNull.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Scene">
+    <Position X="11.75" Y="20.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>oAYAEQAAAIAQgwAQgAREBKAAYAABAAAAIAgkgBIBEgQ=</HashCode>
+      <FileName>Lemon\Scene\Scene.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_pKBInputMgr" />
+      <Field Name="m_pMouseInputMgr" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TerrainManager">
+    <Position X="12" Y="5.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAgAAAIAAABQAAAAAAAAAgAAAAIAQAAkAAAAgMQ=</HashCode>
+      <FileName>Lemon\Asset Management\TerrainManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KeyboardInputManager">
+    <Position X="16" Y="21" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IABAEAEAAAAAABAAAAAAhAAAAAABAAARIAAgCAJgEAA=</HashCode>
+      <FileName>Lemon\Scene\KeyboardInputManager.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_inputStrategy" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MouseInputManager">
+    <Position X="7.5" Y="21.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAEAAAAAAAABAEAAAAAACAAAABAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Lemon\Scene\MouseInputManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InputStrategy">
+    <Position X="20.25" Y="21" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABgEAIAAAAAAAAAAAAAAgAAAAEAA=</HashCode>
+      <FileName>Lemon\Scene\InputStrategy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TypedInput">
+    <Position X="19" Y="24.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAAAAECA=</HashCode>
+      <FileName>Lemon\Scene\TypedInput.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StandardInput">
+    <Position X="21.75" Y="24.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAgAAAAAgAAAAEAA=</HashCode>
+      <FileName>Lemon\Scene\StandardInput.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelObject">
+    <Position X="87.5" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAAAAQAAAEAACAAAAAAAAAAAACAAAAABAAAkIgAAAAA=</HashCode>
+      <FileName>Lemon\Tools\Editor\LevelObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelObjectManager">
+    <Position X="90.75" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAQAAAIAAARAAAAQAAAAAAAgIAGAQBEkAAAAACQ=</HashCode>
+      <FileName>Lemon\Tools\Editor\LevelObjectManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelObjectBaseFactory">
+    <Position X="95.5" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAIAAABAAAAAAAAAAQAAAAAAAAAEAAAAAgAAAAAAA=</HashCode>
+      <FileName>Lemon\Tools\Editor\LevelObjectBaseFactory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelObjectFactory&lt;T&gt;">
+    <Position X="95.5" Y="11.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAgAAAABAA=</HashCode>
+      <FileName>Lemon\Tools\Editor\LevelObjectFactory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,13 @@
+<map id="Alarmable" name="Alarmable">
+<area shape="rect" id="Node000001" title="A GameObject that is capable of setting alarms." alt="" coords="224,5,438,491"/>
+<area shape="rect" id="Node000002" href="$class_game_object.html" title="A game object. These are objects that recieve the majority of services that the engine provides." alt="" coords="210,539,452,939"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="334,506,334,539,328,539,328,506"/>
+<area shape="rect" id="Node000003" href="$class_editor_admin.html" title=" " alt="" coords="5,987,211,1909"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="239,953,227,988,214,1027,209,1026,222,986,234,952"/>
+<area shape="rect" id="Node000004" href="$class_editor_u_i.html" title=" " alt="" coords="236,1200,426,1696"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="334,953,334,1200,328,1200,328,953"/>
+<area shape="rect" id="Node000005" href="$class_level_object.html" title="A GameObject that can be used in the editor." alt="" coords="450,1253,657,1643"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="428,952,440,986,481,1121,515,1253,510,1255,476,1122,435,988,423,953"/>
+<area shape="rect" id="Node000006" href="$class_level_object_null.html" title=" " alt="" coords="464,1957,644,2267"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="556,1657,556,1958,551,1958,551,1657"/>
+</map>

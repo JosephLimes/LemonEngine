@@ -1,0 +1,827 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Lemon</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Asset Management\ModelManager.cpp">
+      <Filter>Lemon\Asset Management</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Asset Management\ShaderManager.cpp">
+      <Filter>Lemon\Asset Management</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Asset Management\TextureManager.cpp">
+      <Filter>Lemon\Asset Management</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon.cpp">
+      <Filter>Lemon</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\User Defined\LoadAllResources.cpp">
+      <Filter>Lemon\User Defined</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\User Defined\GameInitialize.cpp">
+      <Filter>Lemon\User Defined</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\User Defined\GameTerminate.cpp">
+      <Filter>Lemon\User Defined</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Camera Management\CameraManager.cpp">
+      <Filter>Lemon\Camera Management</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\Axis.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\Plane.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Scene.cpp">
+      <Filter>Lemon\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\SceneManager.cpp">
+      <Filter>Lemon\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\GameObject\GameObject.cpp">
+      <Filter>Lemon\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\GameObject\Drawable.cpp">
+      <Filter>Lemon\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\GameObject\Updatable.cpp">
+      <Filter>Lemon\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Command\SceneRegistrationBroker.cpp">
+      <Filter>Lemon\Scene\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\GameObject\Alarmable.cpp">
+      <Filter>Lemon\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Time Management\TimeManager.cpp">
+      <Filter>Lemon\Time Management</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\GameObject\Inputable.cpp">
+      <Filter>Lemon\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Command\AlarmDeregistrationCommand.cpp">
+      <Filter>Lemon\Scene\Command\Alarm</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Command\AlarmRegistrationCommand.cpp">
+      <Filter>Lemon\Scene\Command\Alarm</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Command\DrawDeregistrationCommand.cpp">
+      <Filter>Lemon\Scene\Command\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Command\DrawRegistrationCommand.cpp">
+      <Filter>Lemon\Scene\Command\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Command\GameObjectDeregistrationCommand.cpp">
+      <Filter>Lemon\Scene\Command\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Command\GameObjectRegistrationCommand.cpp">
+      <Filter>Lemon\Scene\Command\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Command\UpdateDeregistrationCommand.cpp">
+      <Filter>Lemon\Scene\Command\Update</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Command\UpdateRegistrationCommand.cpp">
+      <Filter>Lemon\Scene\Command\Update</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Command\Input\InputDeregistrationCommand.cpp">
+      <Filter>Lemon\Scene\Command\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Command\Input\InputRegistrationCommand.cpp">
+      <Filter>Lemon\Scene\Command\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Time Management\FreezeTime.cpp">
+      <Filter>Lemon\Time Management</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\AlarmableManager.cpp">
+      <Filter>Lemon\Scene\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\DrawableManager.cpp">
+      <Filter>Lemon\Scene\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\KeyboardInputManager.cpp">
+      <Filter>Lemon\Scene\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\KeyManager.cpp">
+      <Filter>Lemon\Scene\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\UpdatableManager.cpp">
+      <Filter>Lemon\Scene\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\SceneChangeNull.cpp">
+      <Filter>Lemon\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\SceneChangeActive.cpp">
+      <Filter>Lemon\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\Frigate.cpp">
+      <Filter>Game\TestDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\TestScene.cpp">
+      <Filter>Game\TestDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\TestSceneLite.cpp">
+      <Filter>Game\TestDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\DemoStartScene.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\DebugController.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\PlayerTank.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\Bullet.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\BulletFactory.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\BulletObjectPool.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\GameObject\Collidable.cpp">
+      <Filter>Lemon\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\CollisionManager.cpp">
+      <Filter>Lemon\Scene\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Collision\CollidableGroup.cpp">
+      <Filter>Lemon\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Command\CollideDeregistrationCommand.cpp">
+      <Filter>Lemon\Scene\Command\Collide</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Scene\Command\CollideRegistrationCommand.cpp">
+      <Filter>Lemon\Scene\Command\Collide</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Collision\CollisionTestPairCommand.cpp">
+      <Filter>Lemon\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Collision\CollisionTestSelfCommand.cpp">
+      <Filter>Lemon\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Collision\Volumes\CollisionVolumeBSphere.cpp">
+      <Filter>Lemon\Collision\Volumes</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Tools\Visualizer.cpp">
+      <Filter>Lemon\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Tools\VisualizeBSphereCommand.cpp">
+      <Filter>Lemon\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Tools\LemonMath.cpp">
+      <Filter>Lemon\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\GodCam.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\EnemyTank.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Sprite\Sprite.cpp">
+      <Filter>Lemon\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Asset Management\ImageManager.cpp">
+      <Filter>Lemon\Asset Management</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Sprite\SpriteFont.cpp">
+      <Filter>Lemon\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Sprite\SpriteString.cpp">
+      <Filter>Lemon\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Asset Management\FontManager.cpp">
+      <Filter>Lemon\Asset Management</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Tools\ScreenLog.cpp">
+      <Filter>Lemon\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Lemon\Tools\ScreenLogSpriteStringPool.cpp">
+      <Filter>Lemon\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\Ground.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\Obstacle.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\BorderProp.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\LevelTracker.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\EnemyBullet.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\EnemyBulletFactory.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\EnemyBulletObjectPool.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\DemoBossScene.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\BossTank.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\BossBullet.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\BossBulletFactory.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\BossBulletObjectPool.cpp">
+      <Filter>Game\TankDemo</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="_Libs">
+      <UniqueIdentifier>{1392bc0c-ded2-42a7-9ec1-333be4dadedd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\GLFW">
+      <UniqueIdentifier>{d22a518f-dd11-48ea-8247-bd82c5928233}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\GLFW\include">
+      <UniqueIdentifier>{f1613e77-99f1-482b-bccf-12b6784f3aa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\GLFW\lib">
+      <UniqueIdentifier>{c350b52d-8efa-4eca-a258-d57d45c43245}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\SB6">
+      <UniqueIdentifier>{189a2178-2765-49df-b052-8eca24a60d61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\SB6\lib">
+      <UniqueIdentifier>{841af908-0674-4949-8aa0-292e3e84a88b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\SB6\include">
+      <UniqueIdentifier>{d2f5d78b-d9cf-4bd9-bd4e-df7522de593c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\File">
+      <UniqueIdentifier>{fb44cdb2-f236-4b3b-833e-e9e2c3af59cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\File\lib">
+      <UniqueIdentifier>{23abe339-ce80-4523-b0f0-23747e3f512f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\File\include">
+      <UniqueIdentifier>{323b20aa-e08c-4260-84b1-1e85121a9e17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\Math">
+      <UniqueIdentifier>{9fcc2c9b-3e4f-4ab2-a0c5-3099cdf90300}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\Math\lib">
+      <UniqueIdentifier>{ea7cbe8f-1aeb-4ad2-bd4e-fa300408bd5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\Math\include">
+      <UniqueIdentifier>{5d126765-1977-4213-89fb-e004f6468da5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\AzulCore">
+      <UniqueIdentifier>{d3f91089-c7e6-474d-8376-afd372d35a8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\AzulCore\lib">
+      <UniqueIdentifier>{8a854cfc-9294-4797-b476-0b2feacdd62f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\AzulCore\include">
+      <UniqueIdentifier>{60eabb98-a714-4df4-8fa1-3fb92ea55bd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Libs\MemTracker">
+      <UniqueIdentifier>{6e404e0d-ef27-4807-b2de-d317aa819eee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon">
+      <UniqueIdentifier>{aef3393e-06a5-4f08-bf4a-3b6be12d1e04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Asset Management">
+      <UniqueIdentifier>{0e8403b4-d3a5-4a8d-acf4-9bf1a1b1d7f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{853be1cc-cd72-474f-9d9c-4ebdce552083}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\User Defined">
+      <UniqueIdentifier>{000f3087-94bf-4200-af90-31742fb209d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Camera Management">
+      <UniqueIdentifier>{67ccdf79-f22a-4b7f-b916-7b586866ef56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\GameObject">
+      <UniqueIdentifier>{cb2d0ea5-ea76-45c9-9358-af918dabd25f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Scene">
+      <UniqueIdentifier>{2d7c14c1-6ecf-4fd1-bdff-831d42821898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Scene\Command">
+      <UniqueIdentifier>{4411e6db-4fe4-409f-9d26-ac59cb0de481}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Time Management">
+      <UniqueIdentifier>{d6a389cf-7e45-4d2a-870d-cda8491fd15e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Scene\Command\Input">
+      <UniqueIdentifier>{b28681ea-f487-4ebc-9c79-3ec60cb0c354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Scene\Command\Alarm">
+      <UniqueIdentifier>{d663b45c-b71c-4877-811f-95d95ea81945}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Scene\Command\Draw">
+      <UniqueIdentifier>{360d23a1-3c69-4481-98c0-ed8568c553da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Scene\Command\GameObject">
+      <UniqueIdentifier>{e055e582-0ff4-45d8-b2a4-31fb1a505ff8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Scene\Command\Update">
+      <UniqueIdentifier>{be45d60b-20a2-4fa1-8ac5-ccefd98ae0f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Scene\Managers">
+      <UniqueIdentifier>{2a5d2998-7b75-416b-80f3-b96a7f8f0c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\TestDemo">
+      <UniqueIdentifier>{71b41975-4901-49ef-83e3-cd8edcf85410}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\TankDemo">
+      <UniqueIdentifier>{69fe7193-69b5-46b5-8013-45d67e6174e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Collision">
+      <UniqueIdentifier>{2f60f92d-dedf-4ca6-ba43-10efe3c2bd81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Scene\Command\Collide">
+      <UniqueIdentifier>{db174bd7-c89e-4580-a5ad-8479f8aad01f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Collision\Volumes">
+      <UniqueIdentifier>{2fc59f51-18f1-46a4-892f-b9dce40a5908}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Tools">
+      <UniqueIdentifier>{ee7e9882-d3df-4642-bdb5-b77d0b0136e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lemon\Sprite">
+      <UniqueIdentifier>{76d57665-01be-4867-99c5-d5f940280953}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\dist\GLFW\include\GL\glfw.h">
+      <Filter>_Libs\GLFW\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\SB6\include\arcball.h">
+      <Filter>_Libs\SB6\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\SB6\include\object.h">
+      <Filter>_Libs\SB6\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\SB6\include\sb6.h">
+      <Filter>_Libs\SB6\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\SB6\include\sb6ext.h">
+      <Filter>_Libs\SB6\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\SB6\include\sb6ktx.h">
+      <Filter>_Libs\SB6\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\SB6\include\sb6mfile.h">
+      <Filter>_Libs\SB6\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\SB6\include\shader.h">
+      <Filter>_Libs\SB6\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\SB6\include\vmath.h">
+      <Filter>_Libs\SB6\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\SB6\include\GL\gl3w.h">
+      <Filter>_Libs\SB6\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\SB6\include\GL\glcorearb.h">
+      <Filter>_Libs\SB6\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\SB6\include\GL\glext.h">
+      <Filter>_Libs\SB6\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\SB6\include\GL\glxext.h">
+      <Filter>_Libs\SB6\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\SB6\include\GL\wglext.h">
+      <Filter>_Libs\SB6\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\File\include\File.h">
+      <Filter>_Libs\File\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\Math\include\Align16.h">
+      <Filter>_Libs\Math\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\Math\include\Constants.h">
+      <Filter>_Libs\Math\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\Math\include\Enum.h">
+      <Filter>_Libs\Math\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\Math\include\MathEngine.h">
+      <Filter>_Libs\Math\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\Math\include\Matrix.h">
+      <Filter>_Libs\Math\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\Math\include\Util.h">
+      <Filter>_Libs\Math\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\Math\include\Vect.h">
+      <Filter>_Libs\Math\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\AzulCore.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\AzulFileHdr.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\AzulHelper.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\Camera.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\DebugOut.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\Engine.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\GpuVertTypes.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_ColorByPosition.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_ColorNoTexture.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_ColorNoTextureLight.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_Sprite.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_SpriteBox.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_TextureFlat.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_TextureLight.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_WireframeAutoColor.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_WireframeConstantColor.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\Image.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\Keyboard.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\LibrarySetup.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\Model.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\Mouse.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\Rect.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\ShaderObject.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\Texture.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\TextureTGA.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\Math\include\MathApp.h">
+      <Filter>_Libs\Math\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\Math\include\Quat.h">
+      <Filter>_Libs\Math\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\Math\include\QuatApp.h">
+      <Filter>_Libs\Math\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\Math\include\VectApp.h">
+      <Filter>_Libs\Math\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\AzulCore\include\ModelTools.h">
+      <Filter>_Libs\AzulCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\MemTracker\Framework.h">
+      <Filter>_Libs\MemTracker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dist\MemTracker\ProjectSettings.h">
+      <Filter>_Libs\MemTracker</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Asset Management\ModelManager.h">
+      <Filter>Lemon\Asset Management</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Asset Management\ShaderManager.h">
+      <Filter>Lemon\Asset Management</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Asset Management\TextureManager.h">
+      <Filter>Lemon\Asset Management</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon.h">
+      <Filter>Lemon</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Camera Management\CameraManager.h">
+      <Filter>Lemon\Camera Management</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\Axis.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\Plane.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Scene.h">
+      <Filter>Lemon\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\SceneManager.h">
+      <Filter>Lemon\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\Drawable.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\GameObject.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\Updatable.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\SceneRegistrationBroker.h">
+      <Filter>Lemon\Scene\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\Command.h">
+      <Filter>Lemon\Scene\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\RegistrationState.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\Alarmable.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\SceneAttorney.h">
+      <Filter>Lemon\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\UpdatableAttorney.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\DrawableAttorney.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\AlarmableAttorney.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\GameObjectAttorney.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Time Management\TimeManager.h">
+      <Filter>Lemon\Time Management</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\Inputable.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\InputableAttorney.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\KeyEvent.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\AlarmDeregistrationCommand.h">
+      <Filter>Lemon\Scene\Command\Alarm</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\AlarmRegistrationCommand.h">
+      <Filter>Lemon\Scene\Command\Alarm</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\DrawDeregistrationCommand.h">
+      <Filter>Lemon\Scene\Command\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\DrawRegistrationCommand.h">
+      <Filter>Lemon\Scene\Command\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\GameObjectDeregistrationCommand.h">
+      <Filter>Lemon\Scene\Command\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\GameObjectRegistrationCommand.h">
+      <Filter>Lemon\Scene\Command\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\UpdateDeregistrationCommand.h">
+      <Filter>Lemon\Scene\Command\Update</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\UpdateRegistrationCommand.h">
+      <Filter>Lemon\Scene\Command\Update</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\Input\InputDeregistrationCommand.h">
+      <Filter>Lemon\Scene\Command\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\Input\InputRegistrationCommand.h">
+      <Filter>Lemon\Scene\Command\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Time Management\FreezeTime.h">
+      <Filter>Lemon\Time Management</Filter>
+    </ClInclude>
+    <ClInclude Include="LemonAttorney.h">
+      <Filter>Lemon</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\SceneNull.h">
+      <Filter>Lemon\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\AlarmableManager.h">
+      <Filter>Lemon\Scene\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\DrawableManager.h">
+      <Filter>Lemon\Scene\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\KeyboardInputManager.h">
+      <Filter>Lemon\Scene\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\KeyManager.h">
+      <Filter>Lemon\Scene\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\UpdatableManager.h">
+      <Filter>Lemon\Scene\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\SceneChange.h">
+      <Filter>Lemon\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\SceneChangeNull.h">
+      <Filter>Lemon\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\SceneChangeActive.h">
+      <Filter>Lemon\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\SceneManagerAttorney.h">
+      <Filter>Lemon\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\Frigate.h">
+      <Filter>Game\TestDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\TestScene.h">
+      <Filter>Game\TestDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\TestSceneLite.h">
+      <Filter>Game\TestDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\DemoStartScene.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\DebugController.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\PlayerTank.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\Bullet.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\BulletFactory.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\BulletObjectPool.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\Collidable.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\CollisionManager.h">
+      <Filter>Lemon\Scene\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Collision\CollidableGroup.h">
+      <Filter>Lemon\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\CollideDeregistrationCommand.h">
+      <Filter>Lemon\Scene\Command\Collide</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Scene\Command\CollideRegistrationCommand.h">
+      <Filter>Lemon\Scene\Command\Collide</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\GameObject\CollidableAttorney.h">
+      <Filter>Lemon\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Collision\CollisionTestPairCommand.h">
+      <Filter>Lemon\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Collision\CollisionTestSelfCommand.h">
+      <Filter>Lemon\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Collision\CollisionDispatchBase.h">
+      <Filter>Lemon\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Collision\CollisionDispatch.h">
+      <Filter>Lemon\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Collision\Volumes\CollisionVolume.h">
+      <Filter>Lemon\Collision\Volumes</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Collision\Volumes\CollisionVolumeBSphere.h">
+      <Filter>Lemon\Collision\Volumes</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Tools\Visualizer.h">
+      <Filter>Lemon\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Tools\Colors.h">
+      <Filter>Lemon\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Tools\VisualizeBSphereCommand.h">
+      <Filter>Lemon\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Tools\VisualizerAttorney.h">
+      <Filter>Lemon\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Tools\LemonMath.h">
+      <Filter>Lemon\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\GodCam.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\EnemyTank.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Sprite\Sprite.h">
+      <Filter>Lemon\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Asset Management\ImageManager.h">
+      <Filter>Lemon\Asset Management</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Sprite\SpriteFont.h">
+      <Filter>Lemon\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Sprite\SpriteString.h">
+      <Filter>Lemon\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Asset Management\FontManager.h">
+      <Filter>Lemon\Asset Management</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Tools\ScreenLog.h">
+      <Filter>Lemon\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Lemon\Tools\ScreenLogSpriteStringPool.h">
+      <Filter>Lemon\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\Ground.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\Obstacle.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\BorderProp.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\LevelTracker.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\EnemyBullet.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\EnemyBulletFactory.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\EnemyBulletObjectPool.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\DemoBossScene.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\BossTank.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\BossBullet.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\BossBulletFactory.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\BossBulletObjectPool.h">
+      <Filter>Game\TankDemo</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\dist\GLFW\lib\GLFW_Debug.lib">
+      <Filter>_Libs\GLFW\lib</Filter>
+    </Library>
+    <Library Include="..\dist\SB6\lib\sb6_Debug.lib">
+      <Filter>_Libs\SB6\lib</Filter>
+    </Library>
+    <Library Include="..\dist\File\lib\File_Debug.lib">
+      <Filter>_Libs\File\lib</Filter>
+    </Library>
+    <Library Include="..\dist\Math\lib\MathEngine_Debug.lib">
+      <Filter>_Libs\Math\lib</Filter>
+    </Library>
+    <Library Include="..\dist\AzulCore\lib\AzulCore_Debug.lib">
+      <Filter>_Libs\AzulCore\lib</Filter>
+    </Library>
+  </ItemGroup>
+</Project>

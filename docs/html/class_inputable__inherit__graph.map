@@ -1,0 +1,13 @@
+<map id="Inputable" name="Inputable">
+<area shape="rect" id="Node000001" title="An inputable. These are game objects that can recieve callbacks for keyboard input events." alt="" coords="192,5,470,1152"/>
+<area shape="rect" id="Node000002" href="$class_game_object.html" title="A game object. These are objects that recieve the majority of services that the engine provides." alt="" coords="210,1200,452,1600"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="334,1167,334,1200,328,1200,328,1167"/>
+<area shape="rect" id="Node000003" href="$class_editor_admin.html" title=" " alt="" coords="5,1648,211,2571"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="239,1615,227,1649,214,1689,209,1687,222,1647,234,1613"/>
+<area shape="rect" id="Node000004" href="$class_editor_u_i.html" title=" " alt="" coords="236,1861,426,2357"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="334,1614,334,1861,328,1861,328,1614"/>
+<area shape="rect" id="Node000005" href="$class_level_object.html" title="A GameObject that can be used in the editor." alt="" coords="450,1915,657,2304"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="428,1613,440,1647,481,1782,515,1915,510,1916,476,1784,435,1649,423,1615"/>
+<area shape="rect" id="Node000006" href="$class_level_object_null.html" title=" " alt="" coords="464,2619,644,2928"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="556,2319,556,2619,551,2619,551,2319"/>
+</map>

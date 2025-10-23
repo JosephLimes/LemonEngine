@@ -1,0 +1,16 @@
+<map id="TerrainManager" name="TerrainManager">
+<area shape="rect" id="Node000001" title="Asset manager for Terrains." alt="" coords="29,2588,273,3313"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="275,2885,285,2896,293,2911,299,2951,296,2980,287,3002,282,3000,291,2979,294,2951,288,2913,280,2899,271,2889"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="83,2439,218,2524"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="153,2524,153,2571,148,2571,148,2524"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="28,1809,97,1879"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="65,1878,65,1965,71,2089,85,2231,96,2304,111,2374,126,2422,121,2424,105,2375,91,2304,79,2232,66,2089,60,1965,59,1878"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,913,120,999"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="65,1013,65,1809,60,1809,60,1013"/>
+<area shape="rect" id="Node000005" href="$class_terrain.html" title="A square plane with varying height defined by a heightmap." alt="" coords="120,1313,360,2375"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="175,2375,168,2415,167,2423,161,2422,163,2414,170,2374"/>
+<area shape="rect" id="Node000006" href="$class_collision_volume_a_a_b_b.html" title="An axis aligned bounding box used for collision processing." alt="" coords="144,663,336,1249"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="243,1249,243,1296,237,1296,237,1249"/>
+<area shape="rect" id="Node000007" href="$class_collision_volume.html" title="This is the base class that various GameObject collision volumes derive from." alt="" coords="136,5,344,613"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="243,628,243,663,237,663,237,628"/>
+</map>

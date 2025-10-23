@@ -1,0 +1,15 @@
+<map id="DrawDeregistrationCommand" name="DrawDeregistrationCommand">
+<area shape="rect" id="Node000001" title=" " alt="" coords="203,257,451,545"/>
+<area shape="rect" id="Node000003" href="$class_drawable.html" title="A GameObject that can opt in to recieve draw calls." alt="" coords="122,609,304,977"/>
+<area shape="poly" id="edge6_Node000003_Node000001" title=" " alt="" coords="310,546,300,586,298,594,293,593,295,585,305,544"/>
+<area shape="rect" id="Node000002" href="$class_command.html" title=" " alt="" coords="318,5,510,208"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="382,223,372,258,367,257,377,221"/>
+<area shape="rect" id="Node000004" href="$class_draw_registration_command.html" title=" " alt="" coords="274,1041,511,1329"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="458,222,465,257,473,396,476,632,474,871,470,962,464,1018,458,1042,453,1041,459,1017,465,962,468,871,471,632,468,396,460,258,453,223"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="198,609,207,569,210,561,215,562,212,570,203,610"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="307,899,339,948,365,1000,374,1024,369,1026,360,1002,334,951,302,902"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,1151,147,1220"/>
+<area shape="poly" id="edge8_Node000005_Node000003" title=" " alt="" coords="125,884,83,940,66,970,52,1002,46,1036,46,1070,51,1104,59,1134,54,1135,46,1105,40,1071,40,1035,47,1001,61,968,79,937,121,881"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="272,1095,242,1059,218,1018,210,995,215,993,223,1016,246,1056,276,1091"/>
+<area shape="poly" id="edge7_Node000003_Node000005" title=" " alt="" coords="81,1150,99,1081,123,1001,126,993,131,994,128,1002,104,1082,86,1152"/>
+</map>

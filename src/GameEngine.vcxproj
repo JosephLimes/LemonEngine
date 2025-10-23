@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3167A812-5D2C-4EE9-ACFD-F0E959384755}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>spinnycube</RootNamespace>
+    <ProjectName>Lemon</ProjectName>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)include;$(SolutionDir)extern\glfw-2.7.6\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)_Debug</TargetName>
+    <OutDir>$(ProjectDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <GenerateManifest>false</GenerateManifest>
+    <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)include;$(SolutionDir)extern\glfw-2.7.6\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(ProjectName)_$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)dist\Math\include;$(SolutionDir)dist\SB6\include;$(SolutionDir)dist\GLFW\include;$(SolutionDir)dist\File\include;$(SolutionDir)dist\AzulCore\include;$(SolutionDir)src\Lemon</AdditionalIncludeDirectories>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <StringPooling>false</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <SDLCheck>
+      </SDLCheck>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableParallelCodeGeneration>false</EnableParallelCodeGeneration>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+      <UseUnicodeForAssemblerListing>false</UseUnicodeForAssemblerListing>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
+      <ForcedIncludeFiles>$(SolutionDir)dist\MemTracker\Framework.h</ForcedIncludeFiles>
+      <LanguageStandard>Default</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>MSVCRTD.lib</IgnoreSpecificDefaultLibraries>
+      <ShowProgress>NotSet</ShowProgress>
+      <LinkStatus>
+      </LinkStatus>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+      <AdditionalDependencies>xmllite.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);WINDOWS_TARGET_PLATFORM="$(TargetPlatformVersion)";MEMORY_LOGS_DIR=R"($(SolutionDir))";</PreprocessorDefinitions>
+      <ForcedIncludeFiles>$(SolutionDir)dist\MemTracker\Framework.h</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>$(SolutionDir)dist\Math\include;$(SolutionDir)dist\SB6\include;$(SolutionDir)dist\GLFW\include;$(SolutionDir)dist\File\include;$(SolutionDir)dist\AzulCore\include;$(SolutionDir)src\Lemon</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Game\Axis.cpp" />
+    <ClCompile Include="..\Game\Barrel.cpp" />
+    <ClCompile Include="..\Game\BossBullet.cpp" />
+    <ClCompile Include="..\Game\BossBulletFactory.cpp" />
+    <ClCompile Include="..\Game\BossBulletObjectPool.cpp" />
+    <ClCompile Include="..\Game\BossTank.cpp" />
+    <ClCompile Include="..\Game\BuildingA.cpp" />
+    <ClCompile Include="..\Game\BuildingB.cpp" />
+    <ClCompile Include="..\Game\Bullet.cpp" />
+    <ClCompile Include="..\Game\BulletFactory.cpp" />
+    <ClCompile Include="..\Game\BulletObjectPool.cpp" />
+    <ClCompile Include="..\Game\Container.cpp" />
+    <ClCompile Include="..\Game\DebugController.cpp" />
+    <ClCompile Include="..\Game\DemoBossScene.cpp" />
+    <ClCompile Include="..\Game\DemoStartScene.cpp" />
+    <ClCompile Include="..\Game\EnemyBullet.cpp" />
+    <ClCompile Include="..\Game\EnemyBulletFactory.cpp" />
+    <ClCompile Include="..\Game\EnemyBulletObjectPool.cpp" />
+    <ClCompile Include="..\Game\EnemyTank.cpp" />
+    <ClCompile Include="..\Game\ExampleCube.cpp" />
+    <ClCompile Include="..\Game\ExampleScene.cpp" />
+    <ClCompile Include="..\Game\Frigate.cpp" />
+    <ClCompile Include="..\Game\GodCam.cpp" />
+    <ClCompile Include="..\Game\InanimateTank.cpp" />
+    <ClCompile Include="..\Game\Plane.cpp" />
+    <ClCompile Include="..\Game\PlayerTank.cpp" />
+    <ClCompile Include="..\Game\LevelTracker.cpp" />
+    <ClCompile Include="..\Game\Rock1.cpp" />
+    <ClCompile Include="..\Game\Rock2.cpp" />
+    <ClCompile Include="..\Game\Rock3.cpp" />
+    <ClCompile Include="..\Game\Rock4.cpp" />
+    <ClCompile Include="..\Game\Rock5.cpp" />
+    <ClCompile Include="..\Game\Rock6.cpp" />
+    <ClCompile Include="..\Game\TelephonePole.cpp" />
+    <ClCompile Include="..\Game\TestScene.cpp" />
+    <ClCompile Include="..\Game\WallA.cpp" />
+    <ClCompile Include="..\Game\WallB.cpp" />
+    <ClCompile Include="Lemon.cpp" />
+    <ClCompile Include="Lemon\Asset Management\FontManager.cpp" />
+    <ClCompile Include="Lemon\Asset Management\ImageManager.cpp" />
+    <ClCompile Include="Lemon\Asset Management\ModelManager.cpp" />
+    <ClCompile Include="Lemon\Asset Management\ShaderManager.cpp" />
+    <ClCompile Include="Lemon\Asset Management\TerrainManager.cpp" />
+    <ClCompile Include="Lemon\Asset Management\TextureManager.cpp" />
+    <ClCompile Include="Lemon\Camera Management\CameraManager.cpp" />
+    <ClCompile Include="Lemon\Collision\CollidableGroup.cpp" />
+    <ClCompile Include="Lemon\Collision\CollisionTestPairCommand.cpp" />
+    <ClCompile Include="Lemon\Collision\CollisionTestSelfCommand.cpp" />
+    <ClCompile Include="Lemon\Collision\CollisionTestTerrainCommand.cpp" />
+    <ClCompile Include="Lemon\Collision\Volumes\CollisionVolumeAABB.cpp" />
+    <ClCompile Include="Lemon\Collision\Volumes\CollisionVolumeBSphere.cpp" />
+    <ClCompile Include="Lemon\Collision\Volumes\CollisionVolumeOBB.cpp" />
+    <ClCompile Include="Lemon\GameObject\Alarmable.cpp" />
+    <ClCompile Include="Lemon\GameObject\Collidable.cpp" />
+    <ClCompile Include="Lemon\GameObject\Drawable.cpp" />
+    <ClCompile Include="Lemon\GameObject\GameObject.cpp" />
+    <ClCompile Include="Lemon\GameObject\Inputable.cpp" />
+    <ClCompile Include="Lemon\GameObject\Updatable.cpp" />
+    <ClCompile Include="Lemon\Scene\AlarmableManager.cpp" />
+    <ClCompile Include="Lemon\Scene\ButtonManager.cpp" />
+    <ClCompile Include="Lemon\Scene\CollisionManager.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\AlarmDeregistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\AlarmRegistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\CollideDeregistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\CollideRegistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\DrawDeregistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\DrawRegistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\GameObjectDeregistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\GameObjectRegistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\Input\InputDeregistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\Input\InputMouseDeregistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\Input\InputMouseRegistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\Input\InputRegistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\Input\InputTypedDeregistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\Input\InputTypedRegistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\SceneRegistrationBroker.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\UpdateDeregistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\Command\UpdateRegistrationCommand.cpp" />
+    <ClCompile Include="Lemon\Scene\DrawableManager.cpp" />
+    <ClCompile Include="Lemon\Scene\KeyboardInputManager.cpp" />
+    <ClCompile Include="Lemon\Scene\KeyManager.cpp" />
+    <ClCompile Include="Lemon\Scene\MouseInputManager.cpp" />
+    <ClCompile Include="Lemon\Scene\Scene.cpp" />
+    <ClCompile Include="Lemon\Scene\SceneChangeActive.cpp" />
+    <ClCompile Include="Lemon\Scene\SceneChangeNull.cpp" />
+    <ClCompile Include="Lemon\Scene\SceneManager.cpp" />
+    <ClCompile Include="Lemon\Scene\SceneTerrainActive.cpp" />
+    <ClCompile Include="Lemon\Scene\SceneTerrainManager.cpp" />
+    <ClCompile Include="Lemon\Scene\StandardInput.cpp" />
+    <ClCompile Include="Lemon\Scene\TypedInput.cpp" />
+    <ClCompile Include="Lemon\Scene\UpdatableManager.cpp" />
+    <ClCompile Include="Lemon\Sprite\Sprite.cpp" />
+    <ClCompile Include="Lemon\Sprite\SpriteFont.cpp" />
+    <ClCompile Include="Lemon\Sprite\SpriteString.cpp" />
+    <ClCompile Include="Lemon\Terrain\Area.cpp" />
+    <ClCompile Include="Lemon\Terrain\AreaIterator.cpp" />
+    <ClCompile Include="Lemon\Terrain\Terrain.cpp" />
+    <ClCompile Include="Lemon\Time Management\FreezeTime.cpp" />
+    <ClCompile Include="Lemon\Time Management\TimeManager.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\EditorCam.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\EditorDrawableManager.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\EditorAdmin.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\EditorInputCamera.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\EditorInputMarker.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\EditorScene.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\EditorUI.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\LevelObject.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\LevelObjectManager.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\ManipRot.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\ManipScale.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\ManipTrans.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\MapFile.cpp" />
+    <ClCompile Include="Lemon\Tools\Editor\MapFileParser.cpp" />
+    <ClCompile Include="Lemon\Tools\LemonMath.cpp" />
+    <ClCompile Include="Lemon\Tools\ScreenLog\ScreenLog.cpp" />
+    <ClCompile Include="Lemon\Tools\ScreenLog\ScreenLogSpriteStringPool.cpp" />
+    <ClCompile Include="Lemon\Tools\Visualizer\VisualizeAABBCommand.cpp" />
+    <ClCompile Include="Lemon\Tools\Visualizer\VisualizeAABBCommandPool.cpp" />
+    <ClCompile Include="Lemon\Tools\Visualizer\VisualizeBSphereCommand.cpp" />
+    <ClCompile Include="Lemon\Tools\Visualizer\VisualizeBSphereCommandPool.cpp" />
+    <ClCompile Include="Lemon\Tools\Visualizer\VisualizeOBBCommand.cpp" />
+    <ClCompile Include="Lemon\Tools\Visualizer\VisualizeOBBCommandPool.cpp" />
+    <ClCompile Include="Lemon\Tools\Visualizer\VisualizePointCommand.cpp" />
+    <ClCompile Include="Lemon\Tools\Visualizer\VisualizePointCommandPool.cpp" />
+    <ClCompile Include="Lemon\Tools\Visualizer\Visualizer.cpp" />
+    <ClCompile Include="Lemon\Tools\Visualizer\VisualizeSegmentCommand.cpp" />
+    <ClCompile Include="Lemon\Tools\Visualizer\VisualizeSegmentCommandPool.cpp" />
+    <ClCompile Include="Lemon\User Defined\GameInitialize.cpp" />
+    <ClCompile Include="Lemon\User Defined\GameTerminate.cpp" />
+    <ClCompile Include="Lemon\User Defined\LoadAllResources.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\dist\AzulCore\include\AzulCore.h" />
+    <ClInclude Include="..\dist\AzulCore\include\AzulFileHdr.h" />
+    <ClInclude Include="..\dist\AzulCore\include\AzulHelper.h" />
+    <ClInclude Include="..\dist\AzulCore\include\Camera.h" />
+    <ClInclude Include="..\dist\AzulCore\include\DebugOut.h" />
+    <ClInclude Include="..\dist\AzulCore\include\Engine.h" />
+    <ClInclude Include="..\dist\AzulCore\include\GpuVertTypes.h" />
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject.h" />
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_ColorByPosition.h" />
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_ColorNoTexture.h" />
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_ColorNoTextureLight.h" />
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_Sprite.h" />
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_SpriteBox.h" />
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_TextureFlat.h" />
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_TextureLight.h" />
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_WireframeAutoColor.h" />
+    <ClInclude Include="..\dist\AzulCore\include\GraphicsObject_WireframeConstantColor.h" />
+    <ClInclude Include="..\dist\AzulCore\include\Image.h" />
+    <ClInclude Include="..\dist\AzulCore\include\Keyboard.h" />
+    <ClInclude Include="..\dist\AzulCore\include\LibrarySetup.h" />
+    <ClInclude Include="..\dist\AzulCore\include\Model.h" />
+    <ClInclude Include="..\dist\AzulCore\include\ModelTools.h" />
+    <ClInclude Include="..\dist\AzulCore\include\Mouse.h" />
+    <ClInclude Include="..\dist\AzulCore\include\Rect.h" />
+    <ClInclude Include="..\dist\AzulCore\include\ShaderObject.h" />
+    <ClInclude Include="..\dist\AzulCore\include\Texture.h" />
+    <ClInclude Include="..\dist\AzulCore\include\TextureTGA.h" />
+    <ClInclude Include="..\dist\File\include\File.h" />
+    <ClInclude Include="..\dist\GLFW\include\GL\glfw.h" />
+    <ClInclude Include="..\dist\Math\include\Align16.h" />
+    <ClInclude Include="..\dist\Math\include\Constants.h" />
+    <ClInclude Include="..\dist\Math\include\Enum.h" />
+    <ClInclude Include="..\dist\Math\include\MathApp.h" />
+    <ClInclude Include="..\dist\Math\include\MathEngine.h" />
+    <ClInclude Include="..\dist\Math\include\Matrix.h" />
+    <ClInclude Include="..\dist\Math\include\Quat.h" />
+    <ClInclude Include="..\dist\Math\include\QuatApp.h" />
+    <ClInclude Include="..\dist\Math\include\Util.h" />
+    <ClInclude Include="..\dist\Math\include\Vect.h" />
+    <ClInclude Include="..\dist\Math\include\VectApp.h" />
+    <ClInclude Include="..\dist\MemTracker\Framework.h" />
+    <ClInclude Include="..\dist\MemTracker\ProjectSettings.h" />
+    <ClInclude Include="..\dist\SB6\include\arcball.h" />
+    <ClInclude Include="..\dist\SB6\include\GL\gl3w.h" />
+    <ClInclude Include="..\dist\SB6\include\GL\glcorearb.h" />
+    <ClInclude Include="..\dist\SB6\include\GL\glext.h" />
+    <ClInclude Include="..\dist\SB6\include\GL\glxext.h" />
+    <ClInclude Include="..\dist\SB6\include\GL\wglext.h" />
+    <ClInclude Include="..\dist\SB6\include\object.h" />
+    <ClInclude Include="..\dist\SB6\include\sb6.h" />
+    <ClInclude Include="..\dist\SB6\include\sb6ext.h" />
+    <ClInclude Include="..\dist\SB6\include\sb6ktx.h" />
+    <ClInclude Include="..\dist\SB6\include\sb6mfile.h" />
+    <ClInclude Include="..\dist\SB6\include\shader.h" />
+    <ClInclude Include="..\dist\SB6\include\vmath.h" />
+    <ClInclude Include="..\Game\Axis.h" />
+    <ClInclude Include="..\Game\Barrel.h" />
+    <ClInclude Include="..\Game\BossBullet.h" />
+    <ClInclude Include="..\Game\BossBulletFactory.h" />
+    <ClInclude Include="..\Game\BossBulletObjectPool.h" />
+    <ClInclude Include="..\Game\BossTank.h" />
+    <ClInclude Include="..\Game\BuildingA.h" />
+    <ClInclude Include="..\Game\BuildingB.h" />
+    <ClInclude Include="..\Game\Bullet.h" />
+    <ClInclude Include="..\Game\BulletFactory.h" />
+    <ClInclude Include="..\Game\BulletObjectPool.h" />
+    <ClInclude Include="..\Game\Container.h" />
+    <ClInclude Include="..\Game\DebugController.h" />
+    <ClInclude Include="..\Game\DemoBossScene.h" />
+    <ClInclude Include="..\Game\DemoStartScene.h" />
+    <ClInclude Include="..\Game\EnemyBullet.h" />
+    <ClInclude Include="..\Game\EnemyBulletFactory.h" />
+    <ClInclude Include="..\Game\EnemyBulletObjectPool.h" />
+    <ClInclude Include="..\Game\EnemyTank.h" />
+    <ClInclude Include="..\Game\ExampleCube.h" />
+    <ClInclude Include="..\Game\ExampleScene.h" />
+    <ClInclude Include="..\Game\Frigate.h" />
+    <ClInclude Include="..\Game\GodCam.h" />
+    <ClInclude Include="..\Game\InanimateTank.h" />
+    <ClInclude Include="..\Game\Plane.h" />
+    <ClInclude Include="..\Game\PlayerTank.h" />
+    <ClInclude Include="..\Game\LevelTracker.h" />
+    <ClInclude Include="..\Game\Rock1.h" />
+    <ClInclude Include="..\Game\Rock2.h" />
+    <ClInclude Include="..\Game\Rock3.h" />
+    <ClInclude Include="..\Game\Rock4.h" />
+    <ClInclude Include="..\Game\Rock5.h" />
+    <ClInclude Include="..\Game\Rock6.h" />
+    <ClInclude Include="..\Game\TelephonePole.h" />
+    <ClInclude Include="..\Game\TestScene.h" />
+    <ClInclude Include="..\Game\WallA.h" />
+    <ClInclude Include="..\Game\WallB.h" />
+    <ClInclude Include="Lemon.h" />
+    <ClInclude Include="LemonAttorney.h" />
+    <ClInclude Include="Lemon\Asset Management\FontManager.h" />
+    <ClInclude Include="Lemon\Asset Management\FontManagerAttorney.h" />
+    <ClInclude Include="Lemon\Asset Management\ImageManager.h" />
+    <ClInclude Include="Lemon\Asset Management\ImageManagerAttorney.h" />
+    <ClInclude Include="Lemon\Asset Management\ModelManager.h" />
+    <ClInclude Include="Lemon\Asset Management\ModelManagerAttorney.h" />
+    <ClInclude Include="Lemon\Asset Management\ShaderManager.h" />
+    <ClInclude Include="Lemon\Asset Management\ShaderManagerAttorney.h" />
+    <ClInclude Include="Lemon\Asset Management\TerrainManager.h" />
+    <ClInclude Include="Lemon\Asset Management\TerrainManagerAttorney.h" />
+    <ClInclude Include="Lemon\Asset Management\TextureManager.h" />
+    <ClInclude Include="Lemon\Asset Management\TextureManagerAttorney.h" />
+    <ClInclude Include="Lemon\Camera Management\CameraManager.h" />
+    <ClInclude Include="Lemon\Collision\CollidableGroup.h" />
+    <ClInclude Include="Lemon\Collision\CollisionDispatch.h" />
+    <ClInclude Include="Lemon\Collision\CollisionDispatchBase.h" />
+    <ClInclude Include="Lemon\Collision\CollisionTestPairCommand.h" />
+    <ClInclude Include="Lemon\Collision\CollisionTestSelfCommand.h" />
+    <ClInclude Include="Lemon\Collision\CollisionTestTerrainCommand.h" />
+    <ClInclude Include="Lemon\Collision\Volumes\CollisionVolume.h" />
+    <ClInclude Include="Lemon\Collision\Volumes\CollisionVolumeAABB.h" />
+    <ClInclude Include="Lemon\Collision\Volumes\CollisionVolumeBSphere.h" />
+    <ClInclude Include="Lemon\Collision\Volumes\CollisionVolumeOBB.h" />
+    <ClInclude Include="Lemon\GameObject\Alarmable.h" />
+    <ClInclude Include="Lemon\GameObject\AlarmableAttorney.h" />
+    <ClInclude Include="Lemon\GameObject\Collidable.h" />
+    <ClInclude Include="Lemon\GameObject\CollidableAttorney.h" />
+    <ClInclude Include="Lemon\GameObject\Drawable.h" />
+    <ClInclude Include="Lemon\GameObject\DrawableAttorney.h" />
+    <ClInclude Include="Lemon\GameObject\GameObject.h" />
+    <ClInclude Include="Lemon\GameObject\GameObjectAttorney.h" />
+    <ClInclude Include="Lemon\GameObject\Inputable.h" />
+    <ClInclude Include="Lemon\GameObject\InputableAttorney.h" />
+    <ClInclude Include="Lemon\GameObject\InputTypes.h" />
+    <ClInclude Include="Lemon\GameObject\RegistrationState.h" />
+    <ClInclude Include="Lemon\GameObject\Updatable.h" />
+    <ClInclude Include="Lemon\GameObject\UpdatableAttorney.h" />
+    <ClInclude Include="Lemon\Scene\AlarmableManager.h" />
+    <ClInclude Include="Lemon\Scene\ButtonManager.h" />
+    <ClInclude Include="Lemon\Scene\CollisionManager.h" />
+    <ClInclude Include="Lemon\Scene\Command\AlarmDeregistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\AlarmRegistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\CollideDeregistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\CollideRegistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\Command.h" />
+    <ClInclude Include="Lemon\Scene\Command\DrawDeregistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\DrawRegistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\GameObjectDeregistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\GameObjectRegistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\Input\InputDeregistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\Input\InputMouseDeregistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\Input\InputMouseRegistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\Input\InputRegistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\Input\InputTypedDeregistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\Input\InputTypedRegistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\SceneRegistrationBroker.h" />
+    <ClInclude Include="Lemon\Scene\Command\UpdateDeregistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\Command\UpdateRegistrationCommand.h" />
+    <ClInclude Include="Lemon\Scene\DrawableManager.h" />
+    <ClInclude Include="Lemon\Scene\InputStrategy.h" />
+    <ClInclude Include="Lemon\Scene\KeyboardInputManager.h" />
+    <ClInclude Include="Lemon\Scene\KeyManager.h" />
+    <ClInclude Include="Lemon\Scene\MouseInputManager.h" />
+    <ClInclude Include="Lemon\Scene\Scene.h" />
+    <ClInclude Include="Lemon\Scene\SceneAttorney.h" />
+    <ClInclude Include="Lemon\Scene\SceneChange.h" />
+    <ClInclude Include="Lemon\Scene\SceneChangeActive.h" />
+    <ClInclude Include="Lemon\Scene\SceneChangeNull.h" />
+    <ClInclude Include="Lemon\Scene\SceneManager.h" />
+    <ClInclude Include="Lemon\Scene\SceneManagerAttorney.h" />
+    <ClInclude Include="Lemon\Scene\SceneNull.h" />
+    <ClInclude Include="Lemon\Scene\SceneTerrain.h" />
+    <ClInclude Include="Lemon\Scene\SceneTerrainActive.h" />
+    <ClInclude Include="Lemon\Scene\SceneTerrainManager.h" />
+    <ClInclude Include="Lemon\Scene\SceneTerrainNull.h" />
+    <ClInclude Include="Lemon\Scene\StandardInput.h" />
+    <ClInclude Include="Lemon\Scene\TypedInput.h" />
+    <ClInclude Include="Lemon\Scene\UpdatableManager.h" />
+    <ClInclude Include="Lemon\Sprite\Sprite.h" />
+    <ClInclude Include="Lemon\Sprite\SpriteFont.h" />
+    <ClInclude Include="Lemon\Sprite\SpriteString.h" />
+    <ClInclude Include="Lemon\Terrain\Area.h" />
+    <ClInclude Include="Lemon\Terrain\AreaIterator.h" />
+    <ClInclude Include="Lemon\Terrain\Terrain.h" />
+    <ClInclude Include="Lemon\Time Management\FreezeTime.h" />
+    <ClInclude Include="Lemon\Time Management\TimeManager.h" />
+    <ClInclude Include="Lemon\Time Management\TimeManagerAttorney.h" />
+    <ClInclude Include="Lemon\Tools\Colors.h" />
+    <ClInclude Include="Lemon\Tools\Editor\EditorCam.h" />
+    <ClInclude Include="Lemon\Tools\Editor\EditorDrawableManager.h" />
+    <ClInclude Include="Lemon\Tools\Editor\EditorAdmin.h" />
+    <ClInclude Include="Lemon\Tools\Editor\EditorInputCamera.h" />
+    <ClInclude Include="Lemon\Tools\Editor\EditorInputMarker.h" />
+    <ClInclude Include="Lemon\Tools\Editor\EditorScene.h" />
+    <ClInclude Include="Lemon\Tools\Editor\LevelObject.h" />
+    <ClInclude Include="Lemon\Tools\Editor\LevelObjectAttorney.h" />
+    <ClInclude Include="Lemon\Tools\Editor\LevelObjectBaseFactory.h" />
+    <ClInclude Include="Lemon\Tools\Editor\LevelObjectFactory.h" />
+    <ClInclude Include="Lemon\Tools\Editor\LevelObjectManager.h" />
+    <ClInclude Include="Lemon\Tools\Editor\LevelObjectNull.h" />
+    <ClInclude Include="Lemon\Tools\Editor\ManipRot.h" />
+    <ClInclude Include="Lemon\Tools\Editor\ManipScale.h" />
+    <ClInclude Include="Lemon\Tools\Editor\EditorInputStrategy.h" />
+    <ClInclude Include="Lemon\Tools\Editor\ManipTrans.h" />
+    <ClInclude Include="Lemon\Tools\Editor\MapFile.h" />
+    <ClInclude Include="Lemon\Tools\Editor\MapFileParser.h" />
+    <ClInclude Include="Lemon\Tools\Editor\MapFileParserAttorney.h" />
+    <ClInclude Include="Lemon\Tools\Editor\EditorUI.h" />
+    <ClInclude Include="Lemon\Tools\LemonMath.h" />
+    <ClInclude Include="Lemon\Tools\ScreenLog\ScreenLog.h" />
+    <ClInclude Include="Lemon\Tools\ScreenLog\ScreenLogAttorney.h" />
+    <ClInclude Include="Lemon\Tools\ScreenLog\ScreenLogSpriteStringPool.h" />
+    <ClInclude Include="Lemon\Tools\Visualizer\VisualizeAABBCommand.h" />
+    <ClInclude Include="Lemon\Tools\Visualizer\VisualizeAABBCommandPool.h" />
+    <ClInclude Include="Lemon\Tools\Visualizer\VisualizeBSphereCommand.h" />
+    <ClInclude Include="Lemon\Tools\Visualizer\VisualizeBSphereCommandPool.h" />
+    <ClInclude Include="Lemon\Tools\Visualizer\VisualizeOBBCommand.h" />
+    <ClInclude Include="Lemon\Tools\Visualizer\VisualizeOBBCommandPool.h" />
+    <ClInclude Include="Lemon\Tools\Visualizer\VisualizePointCommand.h" />
+    <ClInclude Include="Lemon\Tools\Visualizer\VisualizePointCommandPool.h" />
+    <ClInclude Include="Lemon\Tools\Visualizer\Visualizer.h" />
+    <ClInclude Include="Lemon\Tools\Visualizer\VisualizerAttorney.h" />
+    <ClInclude Include="Lemon\Tools\Visualizer\VisualizeSegmentCommand.h" />
+    <ClInclude Include="Lemon\Tools\Visualizer\VisualizeSegmentCommandPool.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\dist\AzulCore\lib\AzulCore_Debug.lib" />
+    <Library Include="..\dist\File\lib\File_Debug.lib" />
+    <Library Include="..\dist\GLFW\lib\GLFW_Debug.lib" />
+    <Library Include="..\dist\Math\lib\MathEngine_Debug.lib" />
+    <Library Include="..\dist\SB6\lib\sb6_Debug.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="docs.dox" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

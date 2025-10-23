@@ -1,0 +1,19 @@
+<map id="EditorDrawableManager" name="EditorDrawableManager">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,581,230,848"/>
+<area shape="rect" id="Node000002" href="$class_drawable_manager.html" title=" " alt="" coords="32,168,234,477"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,492,125,582,120,581,123,492"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="408,5,550,75"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="409,62,331,93,291,115,254,141,236,158,232,154,251,137,288,110,328,88,408,57"/>
+<area shape="rect" id="Node000004" href="$class_drawable.html" title="A GameObject that can opt in to recieve draw calls." alt="" coords="484,139,666,507"/>
+<area shape="poly" id="edge10_Node000004_Node000003" title=" " alt="" coords="529,73,548,97,559,122,554,124,544,100,525,76"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="485,140,478,115,475,92,480,91,483,114,490,138"/>
+<area shape="rect" id="Node000005" href="$class_draw_registration_command.html" title=" " alt="" coords="254,571,491,859"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="564,507,548,548,529,580,505,610,501,606,524,577,543,545,559,505"/>
+<area shape="rect" id="Node000007" href="$class_draw_deregistration_command.html" title=" " alt="" coords="570,571,818,859"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="659,505,667,530,673,554,668,555,662,531,654,507"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="379,570,389,549,402,529,418,517,434,515,450,513,467,504,470,502,474,506,470,509,452,518,435,520,420,522,406,533,393,551,384,572"/>
+<area shape="rect" id="Node000006" href="$class_command.html" title=" " alt="" coords="264,221,456,424"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="347,439,344,493,346,546,348,571,343,571,341,547,339,493,342,439"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="420,435,445,472,474,505,493,517,514,528,572,579,569,583,511,533,491,522,471,509,441,475,416,438"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="786,571,786,551,781,532,761,494,736,459,677,399,681,396,740,456,766,491,786,530,791,550,792,571"/>
+</map>

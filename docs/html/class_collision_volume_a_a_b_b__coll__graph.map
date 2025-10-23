@@ -1,0 +1,5 @@
+<map id="CollisionVolumeAABB" name="CollisionVolumeAABB">
+<area shape="rect" id="Node000001" title="An axis aligned bounding box used for collision processing." alt="" coords="12,661,205,1248"/>
+<area shape="rect" id="Node000002" href="$class_collision_volume.html" title="This is the base class that various GameObject collision volumes derive from." alt="" coords="5,5,212,613"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,628,112,662,106,662,106,628"/>
+</map>
